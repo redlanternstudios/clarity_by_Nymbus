@@ -7,7 +7,7 @@
 </p>
 
 <p>
-  <img src="./04-brand-assets/clarity-architecture-dark.png" alt="Clarity by Nymbus architecture diagram" width="100%" />
+  <img src="./04-brand-assets/clarity-architecture-high-level.svg" alt="Clarity by Nymbus high level architecture" width="100%" />
 </p>
 
 </div>
@@ -64,6 +64,7 @@ This repo contains the MVP planning inputs for the Clarity concept.
   - `clarity-logo.png` — primary Clarity by Nymbus wordmark and glyph
   - `clarity-architecture-dark.png` — branded system architecture diagram, dark theme
   - `clarity-architecture-light.png` — branded system architecture diagram, light theme
+  - `clarity-architecture-high-level.svg` — current high-level architecture diagram used on the README
 
 ## Purpose
 
@@ -77,7 +78,8 @@ These files are intentionally labeled for people outside the build so they can q
 ## Quick view
 
 - Logo: `04-brand-assets/clarity-logo.png`
-- Architecture: `04-brand-assets/clarity-architecture-dark.png`
+- Architecture: `04-brand-assets/clarity-architecture-high-level.svg`
+- Legacy architecture variant: `04-brand-assets/clarity-architecture-dark.png`
 - Light architecture variant: `04-brand-assets/clarity-architecture-light.png`
 - Loan servicing: `Loan-Servicing-Intelligence.pdf`
 - Team impact: `Anticipated-Team-Impact.pdf`
