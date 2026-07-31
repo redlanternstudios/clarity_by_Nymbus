@@ -19,6 +19,7 @@ Read in this order:
 1. Architectural Input/Outputs diagram
 2. → [Loan Servicing Intelligence](./Loan-Servicing-Intelligence.pdf)
 3. → [Anticipated Team Impact](./Anticipated-Team-Impact.pdf)
+4. → [Build Contract](./BUILD_CONTRACT.md)
 
 > Start with the diagram above, then open the two PDFs in order.
 
@@ -37,6 +38,13 @@ Read in this order:
 - Source file: `Anticipated-Team-Impact.pdf`
 - Purpose: shows the expected team impact and operating implications
 - Why it matters: this is the people and workflow impact layer
+
+### 3. Build Contract
+
+- **Implementation lock for the clickable POC and image pack**
+- Source file: `BUILD_CONTRACT.md`
+- Purpose: defines the canonical mock data, screen specs, click outcomes, role mapping, and state matrix
+- Why it matters: this prevents route drift, screenshot drift, and invented behavior
 
 This repo contains the MVP planning inputs for the Clarity concept.
 
@@ -73,4 +81,5 @@ These files are intentionally labeled for people outside the build so they can q
 - Light architecture variant: `04-brand-assets/clarity-architecture-light.png`
 - Loan servicing: `Loan-Servicing-Intelligence.pdf`
 - Team impact: `Anticipated-Team-Impact.pdf`
+- Build contract: `BUILD_CONTRACT.md`
 </div>
