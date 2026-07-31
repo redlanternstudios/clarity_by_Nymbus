@@ -28,73 +28,81 @@ export default function GlobalShell() {
           <Link href="/borrower">
             <div className="bg-surface border border-border rounded-lg p-8 hover:border-accent transition-colors cursor-pointer h-full flex flex-col justify-between">
               <div>
+                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mb-3">
+                  <span className="text-2xl">👤</span>
+                </div>
                 <h3 className="text-2xl font-serif text-text-primary mb-3">
                   Borrower
                 </h3>
                 <p className="text-text-muted mb-4">
-                  View your loan details, notices, and ask questions about your
-                  account.
+                  View your loan details, notices, and ask questions about your account.
                 </p>
               </div>
               <button className="bg-accent hover:bg-accent-dark text-background font-semibold py-2 px-6 rounded transition-colors">
-                Open Borrower
+                Enter as Borrower
               </button>
             </div>
           </Link>
 
           {/* Servicing Agent Card */}
-          <div className="bg-surface border border-border rounded-lg p-8 opacity-50 cursor-not-allowed h-full flex flex-col justify-between">
-            <div>
-              <h3 className="text-2xl font-serif text-text-primary mb-3">
-                Servicing Agent
-              </h3>
-              <p className="text-text-muted mb-4">
-                Manage cases, route escalations, and monitor system health.
-              </p>
+          <Link href="/servicing">
+            <div className="bg-surface border border-border rounded-lg p-8 hover:border-accent transition-colors cursor-pointer h-full flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-full bg-accent-cyan/20 flex items-center justify-center mb-3">
+                  <span className="text-2xl">🎧</span>
+                </div>
+                <h3 className="text-2xl font-serif text-text-primary mb-3">
+                  Servicing Agent
+                </h3>
+                <p className="text-text-muted mb-4">
+                  Review loan information, manage borrower inquiries, track resolution, and follow guided actions.
+                </p>
+              </div>
+              <button className="bg-accent hover:bg-accent-dark text-background font-semibold py-2 px-6 rounded transition-colors">
+                Enter as Servicing Agent
+              </button>
             </div>
-            <button
-              disabled
-              className="bg-accent text-background font-semibold py-2 px-6 rounded opacity-50 cursor-not-allowed"
-            >
-              Coming Soon
-            </button>
-          </div>
+          </Link>
 
           {/* Floor Support Card */}
-          <div className="bg-surface border border-border rounded-lg p-8 opacity-50 cursor-not-allowed h-full flex flex-col justify-between">
-            <div>
-              <h3 className="text-2xl font-serif text-text-primary mb-3">
-                Floor Support
-              </h3>
-              <p className="text-text-muted mb-4">
-                Review escalations and provide guidance on complex cases.
-              </p>
+          <Link href="/floor-support">
+            <div className="bg-surface border border-border rounded-lg p-8 hover:border-accent transition-colors cursor-pointer h-full flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-full bg-warning/20 flex items-center justify-center mb-3">
+                  <span className="text-2xl">👥</span>
+                </div>
+                <h3 className="text-2xl font-serif text-text-primary mb-3">
+                  Floor Support
+                </h3>
+                <p className="text-text-muted mb-4">
+                  Access real-time guidance, escalations, and routing insights to support borrowers and agents.
+                </p>
+              </div>
+              <button className="bg-accent hover:bg-accent-dark text-background font-semibold py-2 px-6 rounded transition-colors">
+                Enter as Floor Support
+              </button>
             </div>
-            <button
-              disabled
-              className="bg-accent text-background font-semibold py-2 px-6 rounded opacity-50 cursor-not-allowed"
-            >
-              Coming Soon
-            </button>
-          </div>
+          </Link>
 
           {/* Leadership Card */}
-          <div className="bg-surface border border-border rounded-lg p-8 opacity-50 cursor-not-allowed h-full flex flex-col justify-between">
-            <div>
-              <h3 className="text-2xl font-serif text-text-primary mb-3">
-                Leadership
-              </h3>
-              <p className="text-text-muted mb-4">
-                Monitor KPIs, trends, and system performance across all roles.
-              </p>
+          <Link href="/leadership">
+            <div className="bg-surface border border-border rounded-lg p-8 hover:border-accent transition-colors cursor-pointer h-full flex flex-col justify-between">
+              <div>
+                <div className="w-12 h-12 rounded-full bg-info/20 flex items-center justify-center mb-3">
+                  <span className="text-2xl">📊</span>
+                </div>
+                <h3 className="text-2xl font-serif text-text-primary mb-3">
+                  Leadership
+                </h3>
+                <p className="text-text-muted mb-4">
+                  Explore performance insights, trends, and operational intelligence across the organization.
+                </p>
+              </div>
+              <button className="bg-accent hover:bg-accent-dark text-background font-semibold py-2 px-6 rounded transition-colors">
+                Enter as Leadership
+              </button>
             </div>
-            <button
-              disabled
-              className="bg-accent text-background font-semibold py-2 px-6 rounded opacity-50 cursor-not-allowed"
-            >
-              Coming Soon
-            </button>
-          </div>
+          </Link>
         </div>
       </div>
 
