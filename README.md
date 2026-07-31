@@ -17,8 +17,8 @@
 Read in this order:
 
 1. Architectural Input/Outputs diagram
-2. → [Loan Servicing Intelligence](./Loan-Servicing-Intelligence.pdf)
-3. → [Anticipated Team Impact](./Anticipated-Team-Impact.pdf)
+2. → [Loan Servicing Intelligence](./Clarity%20by%20Nymbus%20-%20Loan%20Servicing%20Intelligence.pdf)
+3. → [Anticipated Team Impact](./Clarity%20by%20Nymbus_Mock.MVP.Anticipated-Team%28s%29-Impact.pdf)
 4. → [Build Contract](./BUILD_CONTRACT.md)
 
 > Start with the diagram above, then open the two PDFs in order.
@@ -28,14 +28,14 @@ Read in this order:
 ### 1. Loan Servicing Intelligence
 
 - **Priority read immediately after the architecture diagram**
-- Source file: `Loan-Servicing-Intelligence.pdf`
+- Source file: `Clarity by Nymbus - Loan Servicing Intelligence.pdf`
 - Purpose: explains the loan servicing intelligence concept in detail
 - Why it matters: this is the operating story behind the diagram
 
 ### 2. Anticipated Team Impact
 
 - **Priority read immediately after Loan Servicing Intelligence**
-- Source file: `Anticipated-Team-Impact.pdf`
+- Source file: `Clarity by Nymbus_Mock.MVP.Anticipated-Team(s)-Impact.pdf`
 - Purpose: shows the expected team impact and operating implications
 - Why it matters: this is the people and workflow impact layer
 
@@ -81,7 +81,7 @@ These files are intentionally labeled for people outside the build so they can q
 - Architecture: `04-brand-assets/clarity-architecture-high-level.svg`
 - Legacy architecture variant: `04-brand-assets/clarity-architecture-dark.png`
 - Light architecture variant: `04-brand-assets/clarity-architecture-light.png`
-- Loan servicing: `Loan-Servicing-Intelligence.pdf`
-- Team impact: `Anticipated-Team-Impact.pdf`
+- Loan servicing: `Clarity by Nymbus - Loan Servicing Intelligence.pdf`
+- Team impact: `Clarity by Nymbus_Mock.MVP.Anticipated-Team(s)-Impact.pdf`
 - Build contract: `BUILD_CONTRACT.md`
 </div>
