@@ -4,6 +4,8 @@ Source: `requirements.md`, `design.md`, `02-mvp-page-tree/clarity.mvp.page-tree.
 
 Build target: v0 frontend prototype, mock data only. Backend/production integration is out of scope for this phase.
 
+Routing taxonomy note: keep route destinations to the four human-confirmed destinations only. If additional labels appear in mock data, treat them as intake categories or tags, not route endpoints.
+
 - [ ] 1. Global shell
   - Build top nav, left rail, role toggle, search, notification bell, user menu
   - Wire destinations: `/borrower`, `/servicing`, `/docs/*`
@@ -48,7 +50,7 @@ Build target: v0 frontend prototype, mock data only. Backend/production integrat
 
 - [ ] 9. Case detail (`/servicing/cases/[id]`)
   - Borrower question, loan context, notice paragraph, explanation, confidence, timeline, recommended action, source records
-  - Note composer wired to note history
+  - Note composer wired to note history and owner
   - Actions: add note, reassign, request info, escalate, resolve — each with visible resulting state
   - _Requirements: 2.1, 2.2, 2.3, 2.5_
 
@@ -67,7 +69,7 @@ Build target: v0 frontend prototype, mock data only. Backend/production integrat
   - _Requirements: 3.1, 3.2, 3.3, 3.4, 5.3_
 
 - [ ] 13. Routing rules reference (`/servicing/routing`)
-  - Static reference of destinations: self-service, general servicing, escrow, insurance, tax, hardship, compliance, dispute
+  - Static reference of the four supported destinations: floor support, customer support, product review, technical escalation
   - _Requirements: 3.5_
 
 - [ ] 14. Docs pages (`/docs/product-brief`, `/docs/prd`, `/docs/technical-design`, `/docs/release-plan`, `/docs/user-stories`, `/docs/risk-log`, `/docs/ai-usage`)
@@ -84,3 +86,11 @@ Build target: v0 frontend prototype, mock data only. Backend/production integrat
 1. Are Ask Clarity / Notice Insights / Clarity Copilot responses simulated (scripted against mock data) or backed by a real LLM call for this POC? Design assumes simulated unless decided otherwise.
 2. Is the deliverable format Figma mockups, a running Next.js/v0 prototype, or both? This task list assumes a running v0 prototype per `12-UI-PROTOTYPE-V0-PACK.md`.
 3. Do concrete mock data examples exist for each entity (borrower, case, leadership summary)? None are locked in the source package yet — needed before tasks 2–13 can be built with realistic content.
+
+## Traceability Corrections Applied
+
+- Requirement 3.5 now matches the routing destinations used in design and tasks.
+- Servicing case data now includes the fields needed for note history, ownership, and source records.
+- Floor support and leadership paths are explicitly mapped in `design.md`.
+- EARS wording is normalized to use the system as the actor.
+

@@ -50,6 +50,8 @@ This repo contains the MVP planning inputs for the Clarity concept.
   - Screen map and no-dead-page route plan
 - `03-sdlc-release-package/`
   - Full SDLC package: requirements, architecture, user stories, acceptance criteria, DoD, story points, teams impacted, post-release support, change log, UI prototype brief, v0 UI pack
+- `.kiro/specs/clarity-by-nymbus/`
+  - Kiro-ready spec pack: requirements, design, tasks, and pack README
 - `04-brand-assets/`
   - `clarity-logo.png` — primary Clarity by Nymbus wordmark and glyph
   - `clarity-architecture-dark.png` — branded system architecture diagram, dark theme

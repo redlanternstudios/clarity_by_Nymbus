@@ -61,10 +61,10 @@ If this file and the source package ever disagree, the source package wins. Upda
 **User Story:** As floor support, I want tickets categorized correctly, so that I can respond quickly and send the issue to the right owner.
 
 **Acceptance Criteria**
-1. WHEN a ticket arrives THEN the chatbot SHALL suggest a category and destination queue.
-2. WHEN the chatbot suggests a route THEN the system SHALL require human confirmation before the route is finalized.
+1. WHEN a ticket arrives THEN the system SHALL suggest a category and one of the four supported destination queues.
+2. WHEN the system suggests a route THEN the system SHALL require human confirmation before the route is finalized.
 3. WHEN a ticket is ambiguous or high severity THEN the system SHALL flag it for escalation rather than auto-closing it.
-4. WHEN a human overrides the chatbot's suggestion THEN the system SHALL accept the override and record the correction.
+4. WHEN a human overrides the system's suggestion THEN the system SHALL accept the override and record the correction.
 5. WHEN routing a ticket THEN the system SHALL only offer the defined destinations: floor support, customer support, product review, technical escalation.
 
 ### Requirement 4 — Leadership Visibility
@@ -104,3 +104,9 @@ If this file and the source package ever disagree, the source package wins. Upda
 - Frontend prototype only — no backend build in this phase
 - Dark theme per `01-design-system-tokens/clarity.tokens.css`
 - Every role (borrower, servicing agent, floor support, leadership) must have a distinct, complete path through the product
+
+## Notes on Routing
+
+- The routing destination model is intentionally limited to four human-confirmed destinations: floor support, customer support, product review, and technical escalation.
+- Case categories may be broader internally for mock data and filtering, but they are not route destinations.
+

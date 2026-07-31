@@ -37,6 +37,15 @@ Outcomes (human-confirmed)
 - Issue visibility and routing support, always human-confirmed
 - Internal chatbot classifies and suggests — it does not resolve
 
+### Role Coverage
+
+Each role has a direct, complete path through the product:
+
+- Borrower -> `/borrower` -> `/borrower/notice/[id]` -> `/borrower/ask` -> `/borrower/escalate` -> `/borrower/history`
+- Servicing agent -> `/servicing` -> `/servicing/cases` -> `/servicing/cases/[id]`
+- Floor support -> `/servicing/cases` -> `/servicing/copilot` -> `/servicing/routing`
+- Leadership -> `/servicing` -> `/servicing/trends` -> `/servicing/notice-insights`
+
 ### Experience Flow
 
 1. User lands in a role-based view (borrower or servicing; no cross-role bleed)
@@ -74,7 +83,7 @@ Fonts: display = Iowan Old Style/Baskerville serif (headers only), body = Inter 
 - Status summary card — read-only, always labeled as such
 - Read-only detail panel — loan/case context, visually secondary to primary action
 - Note composer — looks like a note, not an edit form
-- Routing selector — limited to the four defined destinations (floor, customer, product, technical)
+- Routing selector — limited to the four defined destinations (floor support, customer support, product review, technical escalation)
 - Support queue indicator — badge/chip showing queue + SLA risk
 - Severity/priority label — color-coded per status tokens
 
@@ -97,7 +106,7 @@ Fonts: display = Iowan Old Style/Baskerville serif (headers only), body = Inter 
 - `/servicing/cases/[id]` — case detail: context, notes, recommended action, source records
 - `/servicing/trends` — repeated questions, self-service success rate, escalation rate
 - `/servicing/notice-insights` — confusing language detection + rewrite suggestions
-- `/servicing/routing` — routing rule reference (self-service, general servicing, escrow, insurance, tax, hardship, compliance, dispute)
+- `/servicing/routing` — routing rule reference (four supported destinations only)
 - `/servicing/copilot` — governed conversational assistant with source records, risk level, confidence, next step, confirm-action state
 
 ### Docs (7)
@@ -113,7 +122,7 @@ Default, Loading, Empty, No results, Partial data, Error, Routed, Escalated, Rea
 `name, loan_id, status, next_step, note_history[], recent_notice, escalation_state`
 
 ### Servicing case
-`case_id, category, priority, queue, latest_note, routing_suggestion, confidence, triage_outcome`
+`case_id, borrower_name, borrower_question, category, priority, queue, owner, status, note_history[], latest_note, routing_suggestion, confidence, triage_outcome, sla_status, source_records[]`
 
 ### Leadership summary
 `volume_trend, queue_trend, open_count, routed_count, escalated_count, launch_health`
@@ -128,8 +137,20 @@ Default, Loading, Empty, No results, Partial data, Error, Routed, Escalated, Rea
 
 For this POC, AI responses may be simulated/scripted against mock data rather than a live model call — this is a build decision to be locked before implementation starts (see open question in tasks.md), not yet decided in the source SDLC package.
 
-## Risks Carried Into Design (from `02-RISK-REGISTER.md`)
+### Routing Model
 
-- Clarity mistaken for a replacement system → mitigate with persistent "read-only" labeling in UI
-- Chatbot overpromises → mitigate by limiting Copilot UI to classify/suggest, never "resolve"
-- Scope grows beyond POC → mitigate by refusing any screen/route outside this page tree
+The only supported route destinations in the build are:
+
+- floor support
+- customer support
+- product review
+- technical escalation
+
+Any other labels used in mock data should be treated as intake categories or case tags, not final destinations.
+
+### Risks Carried Into Design (from `02-RISK-REGISTER.md`)
+
+- Clarity mistaken for a replacement system -> mitigate with persistent "read-only" labeling in UI
+- Chatbot overpromises -> mitigate by limiting Copilot UI to classify/suggest, never "resolve"
+- Scope grows beyond POC -> mitigate by refusing any screen/route outside this page tree
+

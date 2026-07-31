@@ -18,9 +18,15 @@
 - Kiro spec content is derived line-for-line from the existing SDLC package; if they ever diverge, the SDLC package under `03-sdlc-release-package/` is the source of truth
 - Three open questions carried into `tasks.md` remain unresolved: AI feature implementation (simulated vs. real), deliverable format (Figma vs. running prototype vs. both), and mock data schema
 
+## v0.4
+
+- Reconciled the routing model to one four-destination human-confirmed path across requirements, design, and tasks
+- Expanded the servicing case data model to include note history, ownership, SLA state, and source records needed by the UI
+- Added explicit role-to-route coverage for borrower, servicing agent, floor support, and leadership
+- Normalized EARS actor wording and added a Kiro spec README for easier review
+
 ## Notes
 
 - Any future changes should preserve the lean package shape
 - Do not add dead pages or unsupported branches
 - Label accuracy check on architecture diagrams: "Data Ingestion," "Intelligence Layer," and "Outcomes & Actions" are synthesized labels, not literal component names from `03-ARCHITECTURE.md` — treat diagrams as conceptual, not a literal build inventory
-
