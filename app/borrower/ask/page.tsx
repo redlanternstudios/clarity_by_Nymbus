@@ -5,7 +5,6 @@ import { useState, FormEvent } from 'react';
 import Link from 'next/link';
 
 export default function AskClarity() {
-  const [selectedQuestion, setSelectedQuestion] = useState<string | null>(null);
   const [input, setInput] = useState('');
   const [answer, setAnswer] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +13,6 @@ export default function AskClarity() {
   const hasAnswer = !!answer;
 
   const handleSuggestedQuestion = (question: string) => {
-    setSelectedQuestion(question);
     setInput(question);
   };
 

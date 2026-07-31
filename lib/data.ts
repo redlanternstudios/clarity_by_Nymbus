@@ -15,6 +15,8 @@ export const mockLoan: Loan = {
   city: 'San Diego',
   state: 'CA',
   zip: '92109',
+  type: '30-Year Fixed Mortgage',
+  status: 'Current',
 };
 
 export const mockNotice: Notice = {

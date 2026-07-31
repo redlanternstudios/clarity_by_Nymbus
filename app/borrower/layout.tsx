@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { mockLoan } from '@/lib/data';
 import { useState } from 'react';
+import { ClarityLogo } from '@/components/clarity-logo';
 
 export default function BorrowerLayout({
   children,
@@ -32,10 +33,8 @@ export default function BorrowerLayout({
       >
         {/* Logo */}
         <Link href="/" className="p-6 border-b border-border block">
-          <h1 className="text-xl font-serif font-bold text-text-primary">
-            Clarity
-          </h1>
-          <p className="text-sm text-text-muted">DEMO ROLE • Borrower</p>
+          <ClarityLogo width={150} priority />
+          <p className="text-sm text-text-muted mt-2">DEMO ROLE • Borrower</p>
         </Link>
 
         {/* Navigation */}
@@ -94,9 +93,9 @@ export default function BorrowerLayout({
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Top Bar */}
         <header className="bg-surface border-b border-border px-6 py-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-text-primary hidden md:block">
-            Clarity
-          </h2>
+          <div className="hidden md:block">
+            <ClarityLogo width={120} />
+          </div>
           <div className="flex items-center gap-4">
             <input
               type="text"

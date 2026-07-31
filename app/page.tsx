@@ -1,15 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import { ClarityLogo } from '@/components/clarity-logo';
 
 export default function GlobalShell() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-background">
       {/* Header */}
-      <div className="mb-16 text-center">
-        <h1 className="text-5xl font-serif font-bold text-text-primary mb-4">
-          Clarity by Nymbus
-        </h1>
+      <div className="mb-16 text-center flex flex-col items-center">
+        <ClarityLogo width={320} priority className="mb-6" />
         <p className="text-lg text-text-muted">
           Demonstration environment • fictional data
         </p>
