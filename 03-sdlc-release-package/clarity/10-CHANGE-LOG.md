@@ -25,6 +25,12 @@
 - Added explicit role-to-route coverage for borrower, servicing agent, floor support, and leadership
 - Normalized EARS actor wording and added a Kiro spec README for easier review
 
+## v0.5
+
+- Added an enterprise-ready package README with approach and next steps
+- Added an explicit AI usage record describing what AI did, what it did not do, and where human review remained required
+- Updated the package index so the new docs are easy to find
+
 ## Notes
 
 - Any future changes should preserve the lean package shape

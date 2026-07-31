@@ -7,6 +7,8 @@ This workspace folder is the source draft for the reusable `/sdlc` skill and the
 - `skill/SKILL.md` - reusable skill instruction set
 - `clarity/` - project-specific SDLC package for Clarity by Nymbus
 - `.kiro/specs/clarity-by-nymbus/` - Kiro-ready mirror of the same Clarity spec set
+- `clarity/README.md` - approach and next steps for the POC
+- `clarity/13-AI-USAGE.md` - audit trail for how AI was used
 
 ## Rule
 

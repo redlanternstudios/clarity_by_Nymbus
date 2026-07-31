@@ -26,6 +26,8 @@ This folder contains the lean release package for the Clarity by Nymbus POC.
 10. Change Log
 11. UI Prototype Brief
 12. UI Prototype Input Pack
+13. Package README
+14. AI Usage
 
 ## Build Boundary
 
@@ -34,6 +36,7 @@ This folder contains the lean release package for the Clarity by Nymbus POC.
 - No dead pages
 - No hidden workflow branches
 - Frontend prototype will be built in v0
+- AI usage must be documented and reviewable
 
 ## Owner Note
 
