@@ -42,6 +42,8 @@ Read in this order:
 5. [User Stories](./03-sdlc-release-package/clarity/04-USER-STORIES.md)
 6. [Page Tree](./02-mvp-page-tree/clarity.mvp.page-tree.md)
 7. [Design Tokens](./01-design-system-tokens/clarity.tokens.css)
+8. [Loan Servicing Intelligence Overview (PDF)](./Clarity%20by%20Nymbus%20-%20Loan%20Servicing%20Intelligence.pdf)
+9. [Anticipated Team(s) Impact (PDF)](./Clarity%20by%20Nymbus_Mock.MVP.Anticipated-Team%28s%29-Impact.pdf)
 
 ## What This Repo Is For
 
@@ -79,3 +81,5 @@ These files are labeled so someone outside the build can quickly see:
 - UI image pack source folder: `Clarity by Nymbus - UI Image Pack`
 - Drive UI pack folder: `Clarity by Nymbus - UI Image Pack`
 - Kiro spec pack: `.kiro/specs/clarity-by-nymbus/`
+- Loan Servicing Intelligence overview: [`Clarity by Nymbus - Loan Servicing Intelligence.pdf`](./Clarity%20by%20Nymbus%20-%20Loan%20Servicing%20Intelligence.pdf)
+- Anticipated team(s) impact: [`Clarity by Nymbus_Mock.MVP.Anticipated-Team(s)-Impact.pdf`](./Clarity%20by%20Nymbus_Mock.MVP.Anticipated-Team%28s%29-Impact.pdf)
