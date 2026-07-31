@@ -1,6 +1,5 @@
 'use client';
 
-import { mockLoan } from '@/lib/data';
 import { useState } from 'react';
 import Link from 'next/link';
 

@@ -49,11 +49,11 @@ Borrower Question: "${question}"
 
 Provide a helpful answer that directly addresses the question using the loan information provided. Focus on being clear and reassuring.`;
 
-  const stream = streamText({
+  const result = streamText({
     model: openai('gpt-4o-mini'),
     system: systemPrompt,
     prompt: `Answer the borrower's question: "${question}"`,
   });
 
-  return (await stream).toDataStreamResponse();
+  return result.toTextStreamResponse();
 }
