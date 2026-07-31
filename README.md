@@ -12,15 +12,15 @@
 
 </div>
 
-## Do Not Skip
+## Next Up
 
-**Read in this order. Do not gloss over these.**
+Read in this order:
 
-1. **Architectural Input/Outputs diagram**
-2. **[Loan Servicing Intelligence](./Loan-Servicing-Intelligence.pdf)**
-3. **[Anticipated Team Impact](./Anticipated-Team-Impact.pdf)**
+1. Architectural Input/Outputs diagram
+2. → [Loan Servicing Intelligence](./Loan-Servicing-Intelligence.pdf)
+3. → [Anticipated Team Impact](./Anticipated-Team-Impact.pdf)
 
-> If you only click two things after the diagram, click the two PDFs above.
+> Start with the diagram above, then open the two PDFs in order.
 
 ## Featured Documents
 
