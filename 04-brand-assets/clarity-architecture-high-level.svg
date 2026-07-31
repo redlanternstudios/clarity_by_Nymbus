@@ -1,0 +1,232 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1680 1100' role='img' aria-labelledby='title desc'>
+  <title id='title'>Clarity Architecture at a Glance</title>
+  <desc id='desc'>Dark architecture diagram showing systems of record, the Clarity intelligence layer, and outcomes and actions.</desc>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#030814'/>
+      <stop offset='100%' stop-color='#071631'/>
+    </linearGradient>
+    <linearGradient id='panel' x1='0' y1='0' x2='0' y2='1'>
+      <stop offset='0%' stop-color='#0a1830'/>
+      <stop offset='100%' stop-color='#071123'/>
+    </linearGradient>
+    <linearGradient id='cyan' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#59e7ff'/>
+      <stop offset='100%' stop-color='#2f7cff'/>
+    </linearGradient>
+    <linearGradient id='teal' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#3ff3c4'/>
+      <stop offset='100%' stop-color='#2db4d7'/>
+    </linearGradient>
+    <linearGradient id='violet' x1='0' y1='0' x2='1' y2='1'>
+      <stop offset='0%' stop-color='#8f7bff'/>
+      <stop offset='100%' stop-color='#5c3eff'/>
+    </linearGradient>
+    <filter id='shadow' x='-30%' y='-30%' width='160%' height='160%'>
+      <feDropShadow dx='0' dy='16' stdDeviation='18' flood-color='#000' flood-opacity='.28'/>
+    </filter>
+    <style>
+      .t{font-family:Inter,Arial,sans-serif;fill:#eef8ff}
+      .muted{fill:#b7cbda}
+      .title{font-size:54px;font-weight:800;letter-spacing:-.03em}
+      .sub{font-size:22px;fill:#dcecf8}
+      .sec{font-size:20px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;fill:#4fe0ff}
+      .card{fill:#08172d;stroke:#4fd6ff;stroke-opacity:.85;stroke-width:2}
+      .inner{fill:#0d1b35;stroke:#5da9ff;stroke-opacity:.7;stroke-width:2}
+      .small{font-size:14px;fill:#c9d9e4}
+      .body{font-size:18px;fill:#eef8ff}
+      .note{font-size:15px;fill:#9fc5da}
+      .arrow{stroke:#4fd6ff;stroke-width:6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+
+  <rect width='1680' height='1100' fill='url(#bg)'/>
+  <text class='t title' x='840' y='58' text-anchor='middle'>Clarity Architecture at a Glance</text>
+  <text class='t sub' x='840' y='92' text-anchor='middle'>Read-only with respect to systems of record. Guided servicing intelligence with human-confirmed workflow actions.</text>
+
+  <text class='t sec' x='90' y='145'>Systems of Record</text>
+  <text class='t sec' x='1370' y='145'>Outcomes &amp; Actions</text>
+
+  <rect x='380' y='110' width='920' height='820' rx='24' fill='url(#panel)' stroke='#39d4ff' stroke-width='3' filter='url(#shadow)'/>
+  <text class='t' x='840' y='148' text-anchor='middle' font-size='28' font-weight='800' fill='#44e6ff'>CLARITY BY NYMBUS (INTELLIGENCE LAYER)</text>
+  <text class='t' x='840' y='175' text-anchor='middle' font-size='16' fill='#d7e6f2'>Read-only with respect to systems of record • Routing intelligence • Human confirmation on workflow actions</text>
+
+  <g transform='translate(675 205)'>
+    <circle cx='90' cy='55' r='42' fill='url(#cyan)' opacity='.2'/>
+    <text class='t' x='0' y='70' font-size='92' font-weight='800'>Clarity</text>
+    <text class='t' x='12' y='108' font-size='30' fill='#21bad6' font-weight='700'>by Nymbus</text>
+  </g>
+
+  <g transform='translate(72 170)'>
+    <text class='t sec' x='0' y='0'>Systems of Record</text>
+    <rect class='card' x='0' y='25' width='260' height='126' rx='16'/>
+    <text class='t body' x='26' y='73' font-weight='800'>Loan System</text>
+    <text class='t small' x='26' y='102'>Principal, rate,</text>
+    <text class='t small' x='26' y='124'>payment history</text>
+
+    <rect class='card' x='0' y='182' width='260' height='126' rx='16'/>
+    <text class='t body' x='26' y='230' font-weight='800'>Servicing Data</text>
+    <text class='t small' x='26' y='259'>Cases, notes,</text>
+    <text class='t small' x='26' y='281'>queue status</text>
+
+    <rect class='card' x='0' y='339' width='260' height='126' rx='16'/>
+    <text class='t body' x='26' y='387' font-weight='800'>Notices &amp;</text>
+    <text class='t body' x='26' y='411' font-weight='800'>Documents</text>
+    <text class='t small' x='26' y='439'>Payment changes, tax,</text>
+    <text class='t small' x='26' y='461'>escrow notices</text>
+
+    <rect class='card' x='0' y='496' width='260' height='126' rx='16'/>
+    <text class='t body' x='26' y='544' font-weight='800'>Historical Data</text>
+    <text class='t small' x='26' y='573'>Questions, escalations,</text>
+    <text class='t small' x='26' y='595'>prior outcomes</text>
+  </g>
+
+  <g transform='translate(1326 170)'>
+    <text class='t sec' x='0' y='0'>Outcomes &amp; Actions</text>
+    <rect class='card' x='0' y='25' width='250' height='126' rx='16'/>
+    <text class='t body' x='26' y='66' font-weight='800'>Supported Routing</text>
+    <text class='t body' x='26' y='90' font-weight='800'>Destinations</text>
+    <text class='t small' x='26' y='120'>Floor Support</text>
+    <text class='t small' x='26' y='142'>Customer Support</text>
+    <text class='t small' x='26' y='164'>Product Review</text>
+    <text class='t small' x='26' y='186'>Technical Escalation</text>
+
+    <rect class='card' x='0' y='196' width='250' height='126' rx='16'/>
+    <text class='t body' x='26' y='244' font-weight='800'>Borrower Clarity</text>
+    <text class='t small' x='26' y='273'>Understand payment changes,</text>
+    <text class='t small' x='26' y='295'>next steps, and help options</text>
+
+    <rect class='card' x='0' y='367' width='250' height='126' rx='16'/>
+    <text class='t body' x='26' y='415' font-weight='800'>Servicing Resolution</text>
+    <text class='t small' x='26' y='444'>Agents see context, owner,</text>
+    <text class='t small' x='26' y='466'>confidence, and next action</text>
+
+    <rect class='card' x='0' y='538' width='250' height='126' rx='16'/>
+    <text class='t body' x='26' y='586' font-weight='800'>Leadership Visibility</text>
+    <text class='t small' x='26' y='615'>Trends, notice friction,</text>
+    <text class='t small' x='26' y='637'>and launch health</text>
+  </g>
+
+  <g stroke='url(#cyan)' fill='none'>
+    <path class='arrow' d='M332 248 H378'/>
+    <path class='arrow' d='M332 405 H378'/>
+    <path class='arrow' d='M332 562 H378'/>
+    <path class='arrow' d='M332 719 H378'/>
+    <path class='arrow' d='M1302 248 H1320'/>
+    <path class='arrow' d='M1302 405 H1320'/>
+    <path class='arrow' d='M1302 562 H1320'/>
+    <path class='arrow' d='M1302 719 H1320'/>
+  </g>
+  <g fill='url(#cyan)'>
+    <polygon points='378,248 358,238 358,258'/>
+    <polygon points='378,405 358,395 358,415'/>
+    <polygon points='378,562 358,552 358,572'/>
+    <polygon points='378,719 358,709 358,729'/>
+    <polygon points='1320,248 1340,238 1340,258'/>
+    <polygon points='1320,405 1340,395 1340,415'/>
+    <polygon points='1320,562 1340,552 1340,572'/>
+    <polygon points='1320,719 1340,709 1340,729'/>
+  </g>
+
+  <g transform='translate(408 228)'>
+    <rect class='inner' x='0' y='0' width='390' height='142' rx='18'/>
+    <text class='t body' x='24' y='40' font-weight='800'>Data Ingestion</text>
+    <text class='t small' x='24' y='70'>Read loan context</text>
+    <text class='t small' x='24' y='94'>Parse notices</text>
+    <text class='t small' x='24' y='118'>Understand question</text>
+
+    <rect class='inner' x='410' y='0' width='390' height='142' rx='18'/>
+    <text class='t body' x='434' y='40' font-weight='800'>Intelligence Layer</text>
+    <text class='t small' x='434' y='70'>Explain status</text>
+    <text class='t small' x='434' y='94'>Detect confusion</text>
+    <text class='t small' x='434' y='118'>Suggest routing</text>
+  </g>
+
+  <g transform='translate(408 398)'>
+    <rect class='inner' x='0' y='0' width='252' height='168' rx='18'/>
+    <text class='t body' x='24' y='40' font-weight='800'>Ask Clarity</text>
+    <text class='t small' x='24' y='72'>Borrower Q&amp;A</text>
+    <text class='t small' x='24' y='96'>Grounded in loan context</text>
+    <text class='t small' x='24' y='120'>Source references</text>
+    <text class='t small' x='24' y='144'>Human-help fallback</text>
+    <text class='t small' x='24' y='164' fill='#4fe0ff'>→ Borrower guidance</text>
+
+    <rect class='inner' x='272' y='0' width='252' height='168' rx='18'/>
+    <text class='t body' x='296' y='40' font-weight='800'>Notice Insights</text>
+    <text class='t small' x='296' y='72'>Pattern detection</text>
+    <text class='t small' x='296' y='96'>Language clarity improvement</text>
+    <text class='t small' x='296' y='120'>Illustrative pilot hypothesis</text>
+    <text class='t small' x='296' y='164' fill='#4fe0ff'>→ Ops insight</text>
+
+    <rect class='inner' x='544' y='0' width='252' height='168' rx='18'/>
+    <text class='t body' x='568' y='40' font-weight='800'>Clarity Copilot</text>
+    <text class='t small' x='568' y='72'>Governed assistant</text>
+    <text class='t small' x='568' y='96'>Status, owner, queue, dependencies</text>
+    <text class='t small' x='568' y='120'>Risk, confidence, next step</text>
+    <text class='t small' x='568' y='144'>Human-confirmed mock action</text>
+    <text class='t small' x='568' y='164' fill='#9b8cff'>→ Internal guidance</text>
+  </g>
+
+  <g transform='translate(408 596)'>
+    <rect class='inner' x='0' y='0' width='800' height='180' rx='18'/>
+    <text class='t sec' x='400' y='34' text-anchor='middle' font-size='22'>Role-Specific Surfaces</text>
+    <g transform='translate(22 54)'>
+      <rect x='0' y='0' width='182' height='104' rx='14' fill='#0e1d34' stroke='#5bcfff' stroke-opacity='.45'/>
+      <text class='t' x='22' y='30' font-size='20' font-weight='800'>Borrower</text>
+      <text class='t small' x='22' y='58'>Loan summary</text>
+      <text class='t small' x='22' y='80'>Payment change</text>
+      <text class='t small' x='22' y='102'>Notice explanation</text>
+
+      <rect x='218' y='0' width='182' height='104' rx='14' fill='#0e1d34' stroke='#5bcfff' stroke-opacity='.45'/>
+      <text class='t' x='240' y='30' font-size='20' font-weight='800'>Servicing Agent</text>
+      <text class='t small' x='240' y='58'>Servicing overview</text>
+      <text class='t small' x='240' y='80'>Case queue</text>
+      <text class='t small' x='240' y='102'>Case detail</text>
+
+      <rect x='436' y='0' width='182' height='104' rx='14' fill='#0e1d34' stroke='#5bcfff' stroke-opacity='.45'/>
+      <text class='t' x='458' y='30' font-size='20' font-weight='800'>Floor Support</text>
+      <text class='t small' x='458' y='58'>Queue review</text>
+      <text class='t small' x='458' y='80'>Routing review</text>
+      <text class='t small' x='458' y='102'>Escalate</text>
+
+      <rect x='654' y='0' width='124' height='104' rx='14' fill='#0e1d34' stroke='#5bcfff' stroke-opacity='.45'/>
+      <text class='t' x='676' y='30' font-size='20' font-weight='800'>Leadership</text>
+      <text class='t small' x='676' y='58'>KPIs</text>
+      <text class='t small' x='676' y='80'>Trends</text>
+      <text class='t small' x='676' y='102'>Launch health</text>
+    </g>
+  </g>
+
+  <g transform='translate(408 804)'>
+    <rect x='0' y='0' width='800' height='38' rx='18' fill='#06111f' stroke='#55dfff' stroke-opacity='.55'/>
+    <text class='t' x='400' y='25' text-anchor='middle' font-size='16' font-weight='700' fill='#8be8ff'>Guardrails: Read-only | No Automation | No Dead Pages | Human Confirmation on Routes</text>
+  </g>
+
+  <g transform='translate(54 914)'>
+    <rect class='card' x='0' y='0' width='1570' height='140' rx='20'/>
+    <g transform='translate(34 20)'>
+      <circle cx='42' cy='42' r='40' fill='none' stroke='#3a61d7' stroke-width='2'/>
+      <text class='t' x='42' y='53' text-anchor='middle' font-size='32' font-weight='800' fill='#59e0ff'>✦</text>
+      <text class='t' x='98' y='40' font-size='24' font-weight='800' fill='#55dfff'>Clarity at a Glance</text>
+    </g>
+    <g transform='translate(390 24)'>
+      <text class='t body' x='0' y='22' font-weight='800'>Overlay, Not Replacement</text>
+      <text class='t small' x='0' y='52'>Reads approved servicing context</text>
+      <text class='t small' x='0' y='76'>Never replaces systems of record</text>
+    </g>
+    <g transform='translate(690 24)'>
+      <text class='t body' x='0' y='22' font-weight='800'>Read-only System Boundary</text>
+      <text class='t small' x='0' y='52'>No editing of loan, payment, or notice records</text>
+    </g>
+    <g transform='translate(1040 24)'>
+      <text class='t body' x='0' y='22' font-weight='800'>Guided Assistance</text>
+      <text class='t small' x='0' y='52'>Ask Clarity for borrowers</text>
+      <text class='t small' x='0' y='76'>Clarity Copilot for internal teams</text>
+    </g>
+    <g transform='translate(1340 24)'>
+      <text class='t body' x='0' y='22' font-weight='800'>Human-confirmed Workflow Actions</text>
+      <text class='t small' x='0' y='52'>Notes, assign, reassign, route, escalate, resolve</text>
+      <text class='t small' x='0' y='76'>Local mock state only</text>
+    </g>
+  </g>
+</svg>
