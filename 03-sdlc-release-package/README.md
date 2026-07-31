@@ -9,6 +9,7 @@ This workspace folder is the source draft for the reusable `/sdlc` skill and the
 - `.kiro/specs/clarity-by-nymbus/` - Kiro-ready mirror of the same Clarity spec set
 - `clarity/README.md` - approach and next steps for the POC
 - `clarity/13-AI-USAGE.md` - audit trail for how AI was used
+- `clarity/15-V0-DESIGN-PROMPT.md` - locked prompt for the UI image pack and v0 build
 
 ## Rule
 

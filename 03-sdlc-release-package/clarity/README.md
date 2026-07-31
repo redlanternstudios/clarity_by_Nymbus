@@ -1,50 +1,45 @@
-# Clarity by Nymbus - Approach and Next Steps
+# Clarity by Nymbus
 
-## Purpose
+## How I Approached This
 
-This package is the working release plan for the Clarity by Nymbus POC.
-It exists to keep the build lean, reviewable, and traceable from requirements through implementation.
+This is the plan I used for the Clarity by Nymbus POC.
+I kept it tight because the goal was not to make something huge. The goal was to make something clear, usable, and easy to hand to someone else without extra explanation.
 
-## What This Build Is
+## What I Am Building
 
-- A POC only
-- A mock-data-only frontend prototype
-- A read-only guidance layer on top of servicing workflows
-- A product story for borrowers, servicing agents, floor support, and leadership
+This is a POC.
+It is a mock data frontend prototype.
+It sits on top of servicing workflows as a read only guidance layer.
+It tells the story for borrowers, servicing agents, floor support, and leadership.
 
-## What This Build Is Not
+## What I Am Not Building
 
-- A servicing system replacement
-- A backend integration effort
-- A hidden automation project
-- An autonomous routing or resolution engine
-- A broad fintech platform
+I am not replacing the servicing system.
+I am not building a backend integration project.
+I am not hiding automation in the UI.
+I am not creating an autonomous routing engine.
+I am not trying to turn this into a broad fintech platform.
 
-## Approach
+## What I Kept Locked
 
-1. Lock the product shape first.
-   - Requirements, design, tasks, page tree, and visual tokens stay aligned.
-   - No unsupported routes, no dead pages, no new product branches.
+I started by keeping the product shape consistent across the whole package.
+The requirements, design, tasks, page tree, and visual tokens all point at the same thing.
+If a route, screen, or action was not in the spec, I left it out.
 
-2. Keep the implementation path narrow.
-   - Build the shell first.
-   - Build borrower flows next.
-   - Build servicing flows next.
-   - Finish with docs and verification states.
+I kept the build order narrow.
+Shell first.
+Borrower next.
+Servicing next.
+Docs and verification at the end.
 
-3. Keep the experience readable in one pass.
-   - Minimal UI density.
-   - Clear hierarchy.
-   - Plain labels.
-   - No extra visual noise.
+I kept the UI calm.
+One glance should make the screen make sense.
 
-4. Keep the mock state honest.
-   - Notes, routing confirmations, assignments, escalations, and resolves are local UI state only.
-   - Loan, payment, and notice data stay read-only.
+I kept the mock state honest.
+Notes, routing confirmations, assignments, escalations, and resolves are local UI state only.
+Loan, payment, and notice data stay read only.
 
 ## Source of Truth
-
-The following remain the governing references for this package:
 
 - `01-REQUIREMENTS.md`
 - `03-ARCHITECTURE.md`
@@ -61,15 +56,14 @@ The following remain the governing references for this package:
 ## Next Steps
 
 1. Finalize the UI image pack from the locked prompt.
-2. Convert the approved mockups into the v0 frontend prototype.
+2. Turn the approved mockups into the v0 frontend prototype.
 3. Keep the build aligned with the page tree and route map.
-4. Preserve the read-only boundary for system-of-record data.
-5. Verify every required state appears somewhere in the prototype.
-6. Prepare the final submission package with repo link and brief summary.
+4. Keep the read only boundary intact for system of record data.
+5. Make sure every required state shows up somewhere in the prototype.
+6. Package the repo link with a short note on what I built and why.
 
 ## Handoff Standard
 
-- The repo should be understandable by someone outside the build.
-- The docs should be short, explicit, and scannable.
-- The prototype should match the spec, not reinterpret it.
-
+I want this repo to make sense to somebody outside the build.
+The docs should be short, direct, and easy to scan.
+The prototype should follow the spec instead of trying to be clever.
