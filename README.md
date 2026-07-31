@@ -12,29 +12,33 @@
 
 </div>
 
-## Start Here
+## Do Not Skip
 
-Read these in order:
+**Read in this order. Do not gloss over these.**
 
-1. Architectural Input/Outputs diagram
-2. [Loan Servicing Intelligence](./Loan-Servicing-Intelligence.pdf)
-3. [Anticipated Team Impact](./Anticipated-Team-Impact.pdf)
+1. **Architectural Input/Outputs diagram**
+2. **[Loan Servicing Intelligence](./Loan-Servicing-Intelligence.pdf)**
+3. **[Anticipated Team Impact](./Anticipated-Team-Impact.pdf)**
 
-This repo contains the MVP planning inputs for the Clarity concept.
+> If you only click two things after the diagram, click the two PDFs above.
 
 ## Featured Documents
 
 ### 1. Loan Servicing Intelligence
 
-- Priority read after the architecture diagram
+- **Priority read immediately after the architecture diagram**
 - Source file: `Loan-Servicing-Intelligence.pdf`
 - Purpose: explains the loan servicing intelligence concept in detail
+- Why it matters: this is the operating story behind the diagram
 
 ### 2. Anticipated Team Impact
 
-- Priority read after Loan Servicing Intelligence
+- **Priority read immediately after Loan Servicing Intelligence**
 - Source file: `Anticipated-Team-Impact.pdf`
 - Purpose: shows the expected team impact and operating implications
+- Why it matters: this is the people and workflow impact layer
+
+This repo contains the MVP planning inputs for the Clarity concept.
 
 ## Folder map
 
