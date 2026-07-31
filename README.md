@@ -1,4 +1,14 @@
+<div align="center">
+
 # Clarity by Nymbus
+
+<p>
+  <img src="./04-brand-assets/clarity-logo.png" alt="Clarity by Nymbus logo" width="520" />
+</p>
+
+<p>
+  <img src="./04-brand-assets/clarity-architecture-dark.png" alt="Clarity by Nymbus architecture diagram" width="100%" />
+</p>
 
 This repo contains the MVP planning inputs for the Clarity concept.
 
@@ -25,3 +35,10 @@ These files are intentionally labeled for people outside the build so they can q
 - what screens exist
 - how the MVP is organized
 - what to build first
+
+## Quick view
+
+- Logo: `04-brand-assets/clarity-logo.png`
+- Architecture: `04-brand-assets/clarity-architecture-dark.png`
+- Light architecture variant: `04-brand-assets/clarity-architecture-light.png`
+</div>
