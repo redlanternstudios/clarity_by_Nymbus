@@ -54,10 +54,17 @@ export default function AskClarity() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto">
-      <h1 className="text-3xl font-serif font-bold text-text-primary mb-8">
-        Ask a question about your loan or notice
+    <div className="space-y-6">
+      <Link href="/borrower" className="text-accent text-sm mb-4 inline-block">
+        ← Back to Home
+      </Link>
+
+      <h1 className="text-3xl font-serif font-bold text-text-primary mb-2">
+        Ask Clarity
       </h1>
+      <p className="text-text-muted mb-8">
+        Get answers about your loan, payments, notices, and more.
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Column - Questions */}
