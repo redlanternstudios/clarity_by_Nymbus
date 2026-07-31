@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { ClarityLogo } from '@/components/clarity-logo';
 
 export default function FloorSupportLayout({
   children,
@@ -19,10 +20,8 @@ export default function FloorSupportLayout({
         }`}
       >
         <Link href="/" className="p-6 border-b border-border block">
-          <h1 className="text-xl font-serif font-bold text-text-primary">
-            Clarity
-          </h1>
-          <p className="text-sm text-text-muted">DEMO ROLE • Floor Support</p>
+          <ClarityLogo width={150} priority />
+          <p className="text-sm text-text-muted mt-2">DEMO ROLE • Floor Support</p>
         </Link>
 
         <div className="flex-1 p-4 space-y-2">

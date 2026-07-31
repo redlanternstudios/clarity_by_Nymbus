@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { ClarityLogo } from '@/components/clarity-logo';
 
 export default function ServicingLayout({
   children,
@@ -31,10 +32,8 @@ export default function ServicingLayout({
       >
         {/* Logo */}
         <Link href="/" className="p-6 border-b border-border block">
-          <h1 className="text-xl font-serif font-bold text-text-primary">
-            Clarity
-          </h1>
-          <p className="text-sm text-text-muted">DEMO ROLE • Servicing</p>
+          <ClarityLogo width={150} priority />
+          <p className="text-sm text-text-muted mt-2">DEMO ROLE • Servicing</p>
         </Link>
 
         {/* Navigation */}
