@@ -14,12 +14,12 @@ export default function BorrowerLayout({
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const navItems = [
-    { href: '/borrower', label: 'Home', icon: '🏠' },
-    { href: '/borrower/loan-detail', label: 'Loan Detail', icon: '📋' },
-    { href: '/borrower/notice-detail', label: 'Notice Detail', icon: '📄' },
-    { href: '/borrower/ask-clarity', label: 'Ask Clarity', icon: '❓' },
-    { href: '/borrower/escalation', label: 'Request Help', icon: '🆘' },
-    { href: '/borrower/history', label: 'Loan History', icon: '📚' },
+    { href: '/borrower', label: 'Home' },
+    { href: '/borrower/loan/LN-20481', label: 'Loan Detail' },
+    { href: '/borrower/notice/NT-7821', label: 'Notice Detail' },
+    { href: '/borrower/ask', label: 'Ask Clarity' },
+    { href: '/borrower/escalate', label: 'Request Help' },
+    { href: '/borrower/history', label: 'Loan History' },
   ];
 
   return (
@@ -47,14 +47,13 @@ export default function BorrowerLayout({
                 key={item.href}
                 href={item.href}
                 onClick={() => setSidebarOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded transition-colors ${
+                className={`block px-4 py-3 rounded transition-colors text-sm ${
                   isActive
-                    ? 'bg-accent text-background'
+                    ? 'bg-accent text-background font-medium'
                     : 'text-text-primary hover:bg-elevated'
                 }`}
               >
-                <span className="text-lg">{item.icon}</span>
-                <span className="font-medium">{item.label}</span>
+                {item.label}
               </Link>
             );
           })}

@@ -12,7 +12,7 @@ export default function BorrowerHome() {
 
       <div className="space-y-6">
         {/* Payment Change Card */}
-        <Link href="/borrower/notice-detail" className="block">
+        <Link href="/borrower/notice/NT-7821" className="block">
           <div className="bg-surface border border-border rounded-lg p-6 hover:border-accent transition-colors cursor-pointer">
             <div className="mb-2">
               <p className="text-sm font-semibold text-accent uppercase">
@@ -36,7 +36,7 @@ export default function BorrowerHome() {
         </Link>
 
         {/* Loan Summary Card */}
-        <Link href="/borrower/loan-detail" className="block">
+        <Link href="/borrower/loan/LN-20481" className="block">
           <div className="bg-surface border border-border rounded-lg p-6 hover:border-accent transition-colors cursor-pointer">
             <p className="text-sm font-semibold text-accent uppercase mb-4">
               Loan summary
@@ -65,7 +65,7 @@ export default function BorrowerHome() {
         </Link>
 
         {/* Recent Notice Card */}
-        <Link href="/borrower/notice-detail" className="block">
+        <Link href="/borrower/notice/NT-7821" className="block">
           <div className="bg-surface border border-border rounded-lg p-6 hover:border-accent transition-colors cursor-pointer">
             <p className="text-sm font-semibold text-accent uppercase mb-4">
               Recent notice
@@ -76,7 +76,7 @@ export default function BorrowerHome() {
         </Link>
 
         {/* Next Step Card */}
-        <Link href="/borrower/ask-clarity" className="block">
+        <Link href="/borrower/ask" className="block">
           <div className="bg-surface border border-border rounded-lg p-6 hover:border-accent transition-colors cursor-pointer">
             <p className="text-sm font-semibold text-accent uppercase mb-4">
               Next step

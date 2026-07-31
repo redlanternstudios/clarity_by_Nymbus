@@ -135,12 +135,12 @@ export default function AskClarity() {
                 <div className="mt-auto pt-6 border-t border-border">
                   <p className="text-xs text-text-muted mb-3">Powered by AI</p>
                   <div className="space-y-2">
-                    <Link href="/borrower/notice-detail">
+                    <Link href="/borrower/notice/NT-7821">
                       <button className="w-full bg-accent hover:bg-accent-dark text-background font-semibold py-2 px-4 rounded transition-colors">
                         Review notice
                       </button>
                     </Link>
-                    <Link href="/borrower/escalation">
+                    <Link href="/borrower/escalate">
                       <button className="w-full bg-elevated hover:bg-surface border border-border text-text-primary font-semibold py-2 px-4 rounded transition-colors">
                         Request help
                       </button>

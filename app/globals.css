@@ -1,3 +1,93 @@
+/* Clarity Design Tokens - Locked Specification */
+:root {
+  /* Core surfaces */
+  --clr-bg: #1c2027;
+  --clr-bg-elevated: #1b1f35;
+  --clr-surface: #1e2636;
+  --clr-surface-2: #22263b;
+  --clr-surface-3: #1c2536;
+
+  /* Borders and separators */
+  --clr-border: #3c4653;
+  --clr-border-strong: #4f565d;
+  --clr-border-soft: rgba(166, 174, 190, 0.18);
+
+  /* Text */
+  --clr-text: #f3f6f7;
+  --clr-text-muted: #a6aebe;
+  --clr-text-subtle: #8088a0;
+  --clr-text-disabled: rgba(243, 246, 247, 0.38);
+
+  /* Brand accents */
+  --clr-accent: #7090e8;
+  --clr-accent-hover: #86a1ef;
+  --clr-accent-strong: #2850b0;
+  --clr-accent-soft: #d0e0f8;
+  --clr-accent-cyan: #90d0e8;
+  --clr-link: #6890e0;
+
+  /* Status */
+  --clr-success: #2e8f57;
+  --clr-success-bg: rgba(46, 143, 87, 0.16);
+  --clr-warning: #c08a1d;
+  --clr-warning-bg: rgba(192, 138, 29, 0.16);
+  --clr-danger: #b24a4a;
+  --clr-danger-bg: rgba(178, 74, 74, 0.16);
+  --clr-info: #7090e8;
+  --clr-info-bg: rgba(112, 144, 232, 0.16);
+
+  /* Typography */
+  --font-display: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  --font-body: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", monospace;
+
+  /* Type scale */
+  --fs-hero: 4.25rem;
+  --fs-h1: 3.25rem;
+  --fs-h2: 2.25rem;
+  --fs-h3: 1.5rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.75rem;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.24);
+  --shadow-panel: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 16px 40px rgba(0, 0, 0, 0.26);
+  --shadow-focus: 0 0 0 3px rgba(112, 144, 232, 0.28);
+
+  /* Component tokens */
+  --shell-topbar: rgba(28, 32, 39, 0.96);
+  --shell-sidebar: #1b1f35;
+  --card-bg: #1e2636;
+  --card-bg-strong: #22263b;
+  --chip-bg: rgba(112, 144, 232, 0.14);
+  --chip-bg-muted: rgba(166, 174, 190, 0.08);
+  --chip-text: #f3f6f7;
+  --input-bg: rgba(28, 37, 54, 0.72);
+  --input-border: rgba(166, 174, 190, 0.22);
+  --table-row-hover: rgba(112, 144, 232, 0.06);
+  --divider: rgba(166, 174, 190, 0.18);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,15 +95,16 @@
 }
 
 html {
-  background: #1c2027;
-  color: #f3f6f7;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: var(--font-body);
 }
 
 body {
-  background: #1c2027;
-  color: #f3f6f7;
+  background: radial-gradient(circle at top, rgba(112, 144, 232, 0.12), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(144, 208, 232, 0.08), transparent 24%),
+    var(--clr-bg);
+  color: var(--clr-text);
   line-height: 1.5;
 }
 
