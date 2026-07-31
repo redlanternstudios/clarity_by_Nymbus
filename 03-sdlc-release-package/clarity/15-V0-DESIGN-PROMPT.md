@@ -2,13 +2,11 @@
 
 ## Use This Exactly
 
-Use this prompt for the v0 UI image pack and the frontend prototype.
-Build only what is in the locked page tree and tokens. Do not add extra screens, hidden flows, or visual flourishes that are not already in the spec.
+Use this prompt for the v0 UI image pack and the frontend prototype. Build only what is in the locked page tree and tokens. Do not add extra screens, hidden flows, or visual flourishes that are not already in the spec.
 
 ## Design Goal
 
-Make Clarity feel premium, calm, and trustworthy.
-It should feel like a Nymbus product with a Clarity layer on top. Clean. Direct. Not loud. Not flashy.
+Make Clarity feel premium, calm, and trustworthy. It should feel like a Nymbus portal with Clarity layered on top. Clean. Direct. Not loud. Not flashy.
 
 ## Non Negotiables
 
@@ -21,6 +19,7 @@ It should feel like a Nymbus product with a Clarity layer on top. Clean. Direct.
 - Do not use decorative gradients that overpower the content
 - Do not use playful fintech styling
 - Do not make the layout feel empty or oversized
+- Do not build a detached role-card landing page that removes the portal shell
 
 ## Exact Visual System
 
@@ -49,6 +48,7 @@ It should feel like a Nymbus product with a Clarity layer on top. Clean. Direct.
 ## Layout Rules
 
 - Build a stable shell with a left rail, a clean top utility bar, and a content canvas
+- Make the portal shell visibly branded, with role selection available in the entry experience
 - Keep the main content centered and content sized
 - Do not let the page stretch into a loose, empty admin layout
 - Keep spacing disciplined and consistent
@@ -99,11 +99,13 @@ The borrower home screen should feel like a real product page, not a draft dashb
 
 Build exactly the page tree in `02-mvp-page-tree/clarity.mvp.page-tree.md`:
 
+- Portal shell / role selector entry
 - Borrower Home
 - Loan Detail
 - Notice Detail
 - Ask Clarity
 - Escalation Flow
+- Escalation Confirmation
 - Loan History
 - Servicing Home
 - Case Queue
@@ -145,5 +147,4 @@ Build the Clarity by Nymbus UI with these rules:
 
 ## What This Should Fix
 
-This prompt is meant to fix the exact problem where the screen feels like a first draft.
-The answer is not more stuff. The answer is better structure, better spacing, cleaner hierarchy, and a quieter premium shell.
+This prompt is meant to fix the exact problem where the screen feels like a first draft. The answer is not more stuff. The answer is better structure, better spacing, cleaner hierarchy, and a quieter premium shell.

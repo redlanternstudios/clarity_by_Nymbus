@@ -11,7 +11,7 @@ Derived from and must remain consistent with:
 
 ## Overview
 
-Clarity is an overlay experience, not a system of record. It reads from existing servicing context (loan data, servicing cases, notices, historical questions) and presents role-specific guidance. It writes only notes and routing decisions — it never modifies loan, payment, or notice data directly.
+Clarity is an overlay experience, not a system of record. It reads from existing servicing context (loan data, servicing cases, notices, historical questions) and presents role-specific guidance. It writes only notes and routing decisions — it never modifies loan, payment, or notice data directly. The build should feel like a portal with a visible role selector inside the shell, not a detached role-card landing page.
 
 ## Architecture
 
@@ -41,6 +41,7 @@ Outcomes (human-confirmed)
 
 Each role has a direct, complete path through the product:
 
+- Portal shell -> `/`
 - Borrower -> `/borrower` -> `/borrower/notice/[id]` -> `/borrower/ask` -> `/borrower/escalate` -> `/borrower/history`
 - Servicing agent -> `/servicing` -> `/servicing/cases` -> `/servicing/cases/[id]`
 - Floor support -> `/servicing/cases` -> `/servicing/copilot` -> `/servicing/routing`
@@ -48,7 +49,7 @@ Each role has a direct, complete path through the product:
 
 ### Experience Flow
 
-1. User lands in a role-based view (borrower or servicing; no cross-role bleed)
+1. User lands in the portal shell and chooses a role-based view (borrower or servicing; no cross-role bleed)
 2. User reviews status, context, and prior notes
 3. User adds a note or initiates a route
 4. If AI-assisted (Ask Clarity, Copilot, Notice Insights), the system shows a suggestion with confidence and source grounding
@@ -90,7 +91,7 @@ Fonts: display = Iowan Old Style/Baskerville serif (headers only), body = Inter 
 ## Screens (page tree — 20 routes, no additions permitted)
 
 ### Shell
-- `/` — global shell: top nav, left rail, role toggle, search, notifications, user menu
+- `/` — portal shell: top nav, left rail, role toggle, search, notifications, user menu, role selection entry state
 
 ### Borrower (6)
 - `/borrower` — home: identity, loan summary, payment change, notice preview, Ask Clarity entry, escalation entry
@@ -153,4 +154,3 @@ Any other labels used in mock data should be treated as intake categories or cas
 - Clarity mistaken for a replacement system -> mitigate with persistent "read-only" labeling in UI
 - Chatbot overpromises -> mitigate by limiting Copilot UI to classify/suggest, never "resolve"
 - Scope grows beyond POC -> mitigate by refusing any screen/route outside this page tree
-

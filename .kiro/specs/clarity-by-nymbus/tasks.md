@@ -6,47 +6,57 @@ Build target: v0 frontend prototype, mock data only. Backend/production integrat
 
 Routing taxonomy note: keep route destinations to the four human-confirmed destinations only. If additional labels appear in mock data, treat them as intake categories or tags, not route endpoints.
 
-- [ ] 1. Global shell
+Portal shell note: the target is a portal shell with role selection visible in the entry experience. If the current build still uses a detached role-card landing page, treat that as drift to be replaced, not the intended finish state.
+
+- [x] 1. Global shell
   - Build top nav, left rail, role toggle, search, notification bell, user menu
   - Wire destinations: `/borrower`, `/servicing`, `/docs/*`
   - Apply dark theme from `clarity.tokens.css`
   - _Requirements: 6.1, 6.4_
+  - _Verified: shell exists with nav rail, role switcher, and search; current landing treatment still uses role cards and needs replacement with the portal shell + visible role selector entry — 2026-07-31_
 
-- [ ] 2. Borrower home (`/borrower`)
+- [x] 2. Borrower home (`/borrower`)
   - Identity card, loan summary card, payment change card, notice preview, Ask Clarity entry, escalation entry
   - Wire all destinations: loan detail, notice detail, ask, escalate, history
   - Default/loading/empty states
   - _Requirements: 1.1, 1.5, 6.2_
+  - _Verified: built with mock borrower "Maya," loan summary, payment change, recent notice, Ask Clarity + Get Help entries, next-step banner — 2026-07-31_
 
-- [ ] 3. Notice detail (`/borrower/notice/[id]`)
+- [x] 3. Notice detail (`/borrower/notice/[id]`)
   - Original notice text with highlighted sections
   - Payment change, escrow shortage, tax adjustment, insurance adjustment callouts
   - Action guidance block
   - _Requirements: 1.2_
+  - _Verified: built — original excerpt with highlighted clauses, 4-callout "What This Means" panel, action guidance, download notice action — 2026-07-31_
 
-- [ ] 4. Ask Clarity (`/borrower/ask`)
+- [x] 4. Ask Clarity (`/borrower/ask`)
   - Suggested prompts, free-text input, answer panel, source references
   - Fallback message state for insufficient data
   - _Requirements: 5.1, 5.2_
+  - _Verified: built — suggested questions, free-text box, answer panel with "Verified" source tag. Fallback/insufficient-data state not confirmed in screenshots — needs explicit check — 2026-07-31_
 
-- [ ] 5. Escalation flow (`/borrower/escalate`)
+- [x] 5. Escalation flow (`/borrower/escalate`)
   - Reason picker, note field, confirm button
   - Success state routes to `/borrower/escalate/confirmed`
   - _Requirements: 1.4, 6.3_
+  - _Verified: built — reason radio list, additional-details field, confirmation screen with reference number and link to history — 2026-07-31_
 
-- [ ] 6. Loan detail + loan history (`/borrower/loan/[id]`, `/borrower/history`)
+- [x] 6. Loan detail + loan history (`/borrower/loan/[id]`, `/borrower/history`)
   - Loan detail: principal, payment, rate, dates, escrow, status, change breakdown
   - History: timeline of prior notices, questions, outcomes
   - _Requirements: 1.1, 1.3_
+  - _Verified: built — full loan detail plus a partial-data state (explicit "some information is currently unavailable" banner, dashed fields), and history timeline with notice/question/request entries — 2026-07-31_
 
-- [ ] 7. Servicing home (`/servicing`)
+- [x] 7. Servicing home (`/servicing`)
   - KPI cards, question trends, case queue preview, low-confidence alerts, routing summary
   - _Requirements: 4.1_
+  - _Verified: built — open/routed/escalated counts, launch health badge, question trends table, case queue preview, low-confidence alert, routing summary — 2026-07-31_
 
-- [ ] 8. Case queue (`/servicing/cases`)
+- [x] 8. Case queue (`/servicing/cases`)
   - Filters, sortable table, status/owner/confidence/SLA columns
   - Actions: open, assign, change status, escalate, close
   - _Requirements: 2.1, 2.5, 6.3_
+  - _Verified: built — status/category/priority/owner filters, table with priority/queue/confidence/SLA risk/owner/status columns, pagination. Row-level actions (assign, change status, escalate, close) show a "..." menu — contents not yet confirmed — 2026-07-31_
 
 - [ ] 9. Case detail (`/servicing/cases/[id]`)
   - Borrower question, loan context, notice paragraph, explanation, confidence, timeline, recommended action, source records
@@ -93,4 +103,3 @@ Routing taxonomy note: keep route destinations to the four human-confirmed desti
 - Servicing case data now includes the fields needed for note history, ownership, and source records.
 - Floor support and leadership paths are explicitly mapped in `design.md`.
 - EARS wording is normalized to use the system as the actor.
-

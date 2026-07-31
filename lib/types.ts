@@ -13,8 +13,6 @@ export interface Loan {
   city: string;
   state: string;
   zip: string;
-  type: string;
-  status: string;
 }
 
 export interface Notice {

@@ -4,9 +4,11 @@ This folder is the Kiro-ready spec set for the Clarity by Nymbus POC.
 
 ## Contents
 
-- `requirements.md` - EARS-style requirements and acceptance criteria
-- `design.md` - system boundaries, data model, screen map, and guardrails
-- `tasks.md` - implementation order and traceability back to requirements
+| File | Purpose |
+|---|---|
+| `requirements.md` | EARS-style requirements and acceptance criteria |
+| `design.md` | system boundaries, data model, screen map, and guardrails |
+| `tasks.md` | implementation order and traceability back to requirements |
 
 ## Source of Truth
 
@@ -19,5 +21,5 @@ If anything ever disagrees, the SDLC package wins and this folder should be upda
 - mock data only
 - frontend prototype only
 - read-only guidance layer, never a system of record replacement
+- portal shell with role selection visible in the entry experience
 - no dead pages, no hidden automation, no unconfirmed routing
-

@@ -10,10 +10,11 @@ I wanted the work to be easy to audit and easy to trust. I also wanted it to be 
 - ChatGPT and Codex helped me turn the project brief into locked requirements with clear constraints and traceability.
 - ChatGPT and Codex helped me line up the page tree, data model, routing rules, and read only guardrails.
 - ChatGPT and Codex helped me turn the design into a build order that maps back to the requirements.
+- ChatGPT and Codex helped me expand the story set, acceptance criteria, DoD, story points, team impacts, and support plan so the package matched the broader portal scope.
 - ChatGPT and Codex helped me draft the repo README, the package README, and this note.
 - ChatGPT and Codex helped me mirror the SDLC package into `.kiro/specs/clarity-by-nymbus/`.
-- CTP and Buildteam helped me catch contradictions, missing fields, route mismatches, and role path gaps.
-- ChatGPT and Codex helped me tighten the UI image pack prompt so it stayed inside the actual scope.
+- CTP and Buildteam helped me catch contradictions, missing fields, route mismatches, shell drift, and role path gaps.
+- ChatGPT and Codex helped me tighten the UI image pack prompt so it stayed inside the actual scope and away from the old role-card landing pattern.
 
 ## What AI Did Not Do
 
@@ -48,6 +49,8 @@ That keeps the work reviewable instead of buried in a chat thread.
 - Routing destinations were normalized to one human confirmed four destination model.
 - The servicing case data model was expanded to include note history, owner, SLA state, and source records.
 - Floor support and leadership paths were made explicit.
+- The portal shell was reframed as a visible role-selector shell instead of a detached role-card landing page.
+- The story set, acceptance criteria, DoD, points, teams, support plan, and UI brief were widened to match the more robust portal.
 - The EARS wording was cleaned up so the system stays the actor.
 
 ## What I Would Want a Reviewer to See

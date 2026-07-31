@@ -31,6 +31,13 @@
 - Added an explicit AI usage record describing what AI did, what it did not do, and where human review remained required
 - Updated the package index so the new docs are easy to find
 
+## v0.6
+
+- Expanded the story set, acceptance criteria, DoD, points, team impacts, and support plan to match the richer portal scope
+- Reframed the product around a portal shell with role selection instead of a detached role-card landing page
+- Aligned the UI brief and locked prompt with the portal shell + role-selector layout and the remaining servicing screens
+- Tightened the risk log to call out repo/Kiro/Drive drift and dead-end case actions
+
 ## Notes
 
 - Any future changes should preserve the lean package shape

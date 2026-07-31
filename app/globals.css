@@ -1,28 +1,5 @@
 @import "tailwindcss";
 
-@theme {
-  --color-background: var(--clr-bg);
-  --color-elevated: var(--clr-bg-elevated);
-  --color-surface: var(--clr-surface);
-  --color-border: var(--clr-border);
-  --color-text-primary: var(--clr-text);
-  --color-text-muted: var(--clr-text-muted);
-  --color-accent: var(--clr-accent);
-  --color-accent-hover: var(--clr-accent-hover);
-  --color-accent-dark: var(--clr-accent-strong);
-  --color-accent-cyan: var(--clr-accent-cyan);
-  --color-success: var(--clr-success);
-  --color-warning: var(--clr-warning);
-  --color-danger: var(--clr-danger);
-  --color-info: var(--clr-info);
-  --color-shell-sidebar: var(--shell-sidebar);
-
-  --font-sans: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
-  --font-mono: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", monospace;
-}
-
-/* Clarity Design Tokens - Locked Specification */
 :root {
   /* Core surfaces */
   --clr-bg: #1c2027;
@@ -42,7 +19,7 @@
   --clr-text-subtle: #8088a0;
   --clr-text-disabled: rgba(243, 246, 247, 0.38);
 
-  /* Brand accents */
+  /* Brand accents sampled from the Nymbus Joy screen */
   --clr-accent: #7090e8;
   --clr-accent-hover: #86a1ef;
   --clr-accent-strong: #2850b0;
@@ -63,129 +40,89 @@
   /* Typography */
   --font-display: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
   --font-body: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", monospace;
-
-  /* Type scale */
-  --fs-hero: 4.25rem;
-  --fs-h1: 3.25rem;
-  --fs-h2: 2.25rem;
-  --fs-h3: 1.5rem;
-  --fs-body: 1rem;
-  --fs-small: 0.875rem;
-  --fs-micro: 0.75rem;
-
-  /* Spacing */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-
-  /* Radius */
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.25rem;
-  --radius-pill: 999px;
-
-  /* Shadows */
-  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.24);
-  --shadow-panel: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 16px 40px rgba(0, 0, 0, 0.26);
-  --shadow-focus: 0 0 0 3px rgba(112, 144, 232, 0.28);
-
-  /* Component tokens */
-  --shell-topbar: rgba(28, 32, 39, 0.96);
-  --shell-sidebar: #1b1f35;
-  --card-bg: #1e2636;
-  --card-bg-strong: #22263b;
-  --chip-bg: rgba(112, 144, 232, 0.14);
-  --chip-bg-muted: rgba(166, 174, 190, 0.08);
-  --chip-text: #f3f6f7;
-  --input-bg: rgba(28, 37, 54, 0.72);
-  --input-border: rgba(166, 174, 190, 0.22);
-  --table-row-hover: rgba(112, 144, 232, 0.06);
-  --divider: rgba(166, 174, 190, 0.18);
+  --font-mono-stack: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", monospace;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@theme {
+  --color-background: var(--clr-bg);
+  --color-elevated: var(--clr-bg-elevated);
+  --color-surface: var(--clr-surface);
+  --color-surface-2: var(--clr-surface-2);
+  --color-surface-3: var(--clr-surface-3);
+
+  --color-border: var(--clr-border);
+  --color-border-strong: var(--clr-border-strong);
+  --color-border-soft: var(--clr-border-soft);
+
+  --color-text-primary: var(--clr-text);
+  --color-text-muted: var(--clr-text-muted);
+  --color-text-subtle: var(--clr-text-subtle);
+  --color-text-disabled: var(--clr-text-disabled);
+
+  --color-accent: var(--clr-accent);
+  --color-accent-hover: var(--clr-accent-hover);
+  --color-accent-strong: var(--clr-accent-strong);
+  --color-accent-soft: var(--clr-accent-soft);
+  --color-accent-cyan: var(--clr-accent-cyan);
+  --color-link: var(--clr-link);
+
+  --color-success: var(--clr-success);
+  --color-success-bg: var(--clr-success-bg);
+  --color-warning: var(--clr-warning);
+  --color-warning-bg: var(--clr-warning-bg);
+  --color-danger: var(--clr-danger);
+  --color-danger-bg: var(--clr-danger-bg);
+  --color-info: var(--clr-info);
+  --color-info-bg: var(--clr-info-bg);
+
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono-stack);
 }
 
-html {
-  background: var(--clr-bg);
-  color: var(--clr-text);
-  font-family: var(--font-body);
-}
+@layer base {
+  html {
+    background: var(--clr-bg);
+    color: var(--clr-text);
+    font-family: var(--font-body);
+    color-scheme: dark;
+  }
 
-body {
-  background: radial-gradient(circle at top, rgba(112, 144, 232, 0.12), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(144, 208, 232, 0.08), transparent 24%),
-    var(--clr-bg);
-  color: var(--clr-text);
-  line-height: 1.5;
-}
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background:
+      radial-gradient(circle at top, rgba(112, 144, 232, 0.12), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(144, 208, 232, 0.08), transparent 24%),
+      var(--clr-bg);
+    color: var(--clr-text);
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  line-height: 1.2;
-}
+  *,
+  ::before,
+  ::after {
+    border-color: var(--clr-border);
+  }
 
-h1 {
-  font-size: 2.5rem;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-h2 {
-  font-size: 1.875rem;
-}
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
 
-h3 {
-  font-size: 1.5rem;
-}
+  ::selection {
+    background: rgba(112, 144, 232, 0.28);
+    color: var(--clr-text);
+  }
 
-a {
-  color: #7090e8;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #8aa5f0;
-}
-
-button {
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-button:hover {
-  transform: translateY(-1px);
-}
-
-input, textarea, select {
-  background: #1e2636;
-  color: #f3f6f7;
-  border: 1px solid #3c4653;
-  border-radius: 6px;
-  padding: 0.75rem;
-  font-size: 1rem;
-  font-family: inherit;
-}
-
-input::placeholder, textarea::placeholder {
-  color: #a6aebe;
-}
-
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  border-color: #7090e8;
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(112, 144, 232, 0.28);
+  }
 }

@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Clarity is a read-only guidance layer that sits on top of existing Nymbus loan servicing workflows. It is not a system of record and does not replace servicing systems. It exists to reduce servicing friction by helping borrowers understand status, helping servicing agents move faster, helping floor support route issues correctly, and helping leadership see operating health.
+Clarity is a read-only loan servicing intelligence portal that sits on top of existing Nymbus loan servicing workflows. It is not a system of record and does not replace servicing systems. It exists to reduce servicing friction by helping borrowers understand status, helping servicing agents move faster, helping floor support route issues correctly, and helping leadership see operating health.
 
-This is a POC. Scope is intentionally bounded: mock data only, no production integrations, no autonomous resolution, no hidden workflow branches, no dead pages.
+This is a POC. Scope is intentionally bounded: mock data only, no production integrations, no autonomous resolution, no hidden workflow branches, no dead pages, and no detached role-card landing page.
 
 ## Source of Truth
 
@@ -19,10 +19,11 @@ If this file and the source package ever disagree, the source package wins. Upda
 
 ## Goals
 
-- Show servicing friction clearly to the people affected by it
-- Help borrowers, agents, and leadership understand status without digging through internal terms
+- Show loan and notice friction clearly to the people affected by it
+- Help borrowers, agents, floor support, and leadership understand status without digging through internal terms
 - Reduce manual back-and-forth between borrowers and servicing
 - Support escalation and routing without replacing the underlying workflow
+- Keep the portal shell readable and keep role selection visible
 
 ## Out of Scope
 
@@ -31,6 +32,7 @@ If this file and the source package ever disagree, the source package wins. Upda
 - Deep backend automation
 - Production data integrations
 - Any workflow branch not represented in the page tree
+- Any detached role-card landing page or marketing-style shell
 
 ## Requirements
 
@@ -44,6 +46,7 @@ If this file and the source package ever disagree, the source package wins. Upda
 3. WHEN a borrower views any read-only field THEN the system SHALL make clear the field is not editable.
 4. IF a borrower cannot resolve their question through self-service THEN the system SHALL provide a visible path to escalate to human help.
 5. WHEN a borrower's status has no data available THEN the system SHALL show an explicit empty state, not a blank or broken view.
+6. WHEN the borrower enters the portal THEN the system SHALL default to the portal shell with role selection visible and the borrower context active.
 
 ### Requirement 2 — Servicing Agent Velocity
 
@@ -104,9 +107,9 @@ If this file and the source package ever disagree, the source package wins. Upda
 - Frontend prototype only — no backend build in this phase
 - Dark theme per `01-design-system-tokens/clarity.tokens.css`
 - Every role (borrower, servicing agent, floor support, leadership) must have a distinct, complete path through the product
+- The shell must stay portal-like and keep role selection visible without hiding the Nymbus framing
 
 ## Notes on Routing
 
 - The routing destination model is intentionally limited to four human-confirmed destinations: floor support, customer support, product review, and technical escalation.
 - Case categories may be broader internally for mock data and filtering, but they are not route destinations.
-

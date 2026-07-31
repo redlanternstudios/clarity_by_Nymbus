@@ -14,9 +14,9 @@
 
 ## Shell
 
-### 0. Global Shell
+### 0. Portal Shell / Role Selector Entry
 - Route: `/`
-- Purpose: role selection and entry point
+- Purpose: stable portal shell and role selector entry
 - Contains:
   - top nav
   - left rail
@@ -24,6 +24,11 @@
   - search
   - notification bell
   - user menu
+- Behavior:
+  - keep the shell visibly branded and portal-like
+  - keep role selection visible in the shell
+  - do not use a detached role-card landing page that removes the portal framing
+  - keep the active role visible in the header or rail
 - Destinations:
   - `/borrower`
   - `/servicing`
@@ -182,7 +187,7 @@
   - estimated operational impact
 
 ### 12. Routing Rules
-- Route: `/servicing/routing`
+- Route: `/servicing/routing-rules`
 - Purpose: define escalation destinations
 - Routes:
   - self-service

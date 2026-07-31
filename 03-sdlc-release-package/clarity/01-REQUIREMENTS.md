@@ -2,49 +2,55 @@
 
 ## Problem Statement
 
-Clarity by Nymbus is a read-only guidance layer that sits on top of existing servicing workflows and helps reduce bottlenecks, surface issues, and route operational work faster.
+Clarity by Nymbus is a read-only loan servicing intelligence portal. It overlays existing servicing workflows and helps borrowers, servicing agents, floor support, and leadership understand what is happening, what changed, who owns it, and what happens next. It is not a system of record and it does not auto-resolve cases. The current UI baseline is a portal shell with role selection visible in the entry experience.
 
 ## Goals
 
-- Show where servicing friction is happening
-- Help borrowers, servicing agents, and leadership understand status and next steps
-- Reduce manual back-and-forth on routine support issues
-- Support clearer escalation and routing
+- Make loan and notice status legible in one glance
+- Reduce borrower back-and-forth for routine questions
+- Give servicing agents case context, notes, and routing guidance
+- Give floor support a confirmed routing model and leadership a clean operating picture
+- Keep the release package traceable across repo, Kiro, and Drive
 
 ## In Scope
 
-- Borrower-facing clarity experience
-- Servicing agent note-taking and issue visibility
-- Stakeholder visibility
-- Internal chatbot for ticket categorization and routing
-- Support and sustainment plan
-- Frontend prototype in v0
+- Borrower portal views for status, notice explanation, Ask Clarity, escalation, and history
+- Servicing views for queue triage, case detail, note history, trends, notice insights, routing, and Clarity Copilot
+- Leadership visibility for launch health and bottlenecks
+- Internal chatbot for ticket categorization and human-confirmed routing
+- UI image pack prompt, source docs, and release package artifacts
+- Frontend prototype in v0 with mock data only
 
 ## Out of Scope
 
 - Full servicing system replacement
-- Autonomous case resolution
-- Deep backend automation beyond routing guidance
-- Final production integrations not needed for the mock
+- Autonomous resolution, auto-close, or auto-route behavior
+- Production data integrations
+- Extra routes or hidden workflows outside the locked page tree
+- A detached role-selector landing page that replaces the portal shell
 
 ## Assumptions
 
 - Existing servicing workflows already exist
 - Clarity augments current process rather than replacing it
-- Support can route issues into existing queues
-- The frontend will be mocked in v0 rather than built as production code
+- Routing remains human-confirmed
+- AI helpers are simulated or scripted unless a real model is later explicitly locked
+- The canonical mock data is shared across the docs, Kiro, and the UI pack
 
 ## Constraints
 
 - POC only
-- Simple architecture
-- No unnecessary branching
-- Keep the repo lean
+- Mock data only
+- Frontend prototype only
+- Dark Nymbus palette only
+- No dead pages
+- No unsupported branches
+- No invented routes, counts, or states
 
 ## Success Criteria
 
-- The story is understandable in one pass
-- The page tree has no dead pages
-- Roles and support paths are clear
-- The launch model feels operationally believable
-
+- The portal can be explained in one pass without hand waving
+- Every role has a distinct path and a clear next step
+- Every screen and action has a visible outcome
+- The docs, page tree, and v0 prompt stay aligned
+- The build reads as an operational product, not a presentation deck

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { mockLoan } from '@/lib/data';
 import { useState } from 'react';
-import { ClarityLogo } from '@/components/clarity-logo';
+import TopBar from '@/components/TopBar';
 
 export default function BorrowerLayout({
   children,
@@ -16,29 +16,27 @@ export default function BorrowerLayout({
 
   const navItems = [
     { href: '/borrower', label: 'Home' },
-    { href: '/borrower/loan/LN-20481', label: 'Loan Detail' },
-    { href: '/borrower/notice/NT-7821', label: 'Notice Detail' },
+    { href: '/borrower/loan/LN-20481', label: 'Loan Details' },
+    { href: '/borrower/notice/NT-7821', label: 'Notices' },
     { href: '/borrower/ask', label: 'Ask Clarity' },
-    { href: '/borrower/escalate', label: 'Request Help' },
-    { href: '/borrower/history', label: 'Loan History' },
+    { href: '/borrower/escalate', label: 'Get Help' },
+    { href: '/borrower/history', label: 'History' },
   ];
 
   return (
     <div className="flex h-screen bg-background">
       {/* Sidebar */}
       <aside
-        className={`fixed md:static w-64 bg-surface border-r border-border flex flex-col z-40 transition-transform md:translate-x-0 ${
+        className={`fixed md:static w-64 bg-elevated border-r border-border flex flex-col z-40 transition-transform md:translate-x-0 ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        {/* Logo */}
-        <Link href="/" className="p-6 border-b border-border block">
-          <ClarityLogo width={150} priority />
-          <p className="text-sm text-text-muted mt-2">DEMO ROLE • Borrower</p>
-        </Link>
+        <div className="p-4 border-b border-border">
+          <p className="text-xs uppercase tracking-wide text-text-muted">Borrower</p>
+        </div>
 
         {/* Navigation */}
-        <nav className="flex-1 p-4 space-y-2">
+        <nav className="flex-1 p-3 space-y-1">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -46,10 +44,10 @@ export default function BorrowerLayout({
                 key={item.href}
                 href={item.href}
                 onClick={() => setSidebarOpen(false)}
-                className={`block px-4 py-3 rounded transition-colors text-sm ${
+                className={`block px-3 py-2.5 rounded transition-colors text-sm border-l-2 ${
                   isActive
-                    ? 'bg-accent text-background font-medium'
-                    : 'text-text-primary hover:bg-elevated'
+                    ? 'bg-accent/15 text-text-primary font-medium border-accent'
+                    : 'text-text-primary hover:bg-surface border-transparent'
                 }`}
               >
                 {item.label}
@@ -91,24 +89,7 @@ export default function BorrowerLayout({
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
-        {/* Top Bar */}
-        <header className="bg-surface border-b border-border px-6 py-4 flex items-center justify-between">
-          <div className="hidden md:block">
-            <ClarityLogo width={120} />
-          </div>
-          <div className="flex items-center gap-4">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="px-4 py-2 bg-background border border-border rounded text-text-primary placeholder-text-muted focus:outline-none focus:border-accent"
-            />
-            <div className="w-10 h-10 rounded bg-accent flex items-center justify-center text-background font-bold">
-              MT
-            </div>
-          </div>
-        </header>
-
-        {/* Content Area */}
+        <TopBar role="Borrower" />
         <div className="flex-1 overflow-auto bg-background p-6">{children}</div>
       </main>
     </div>

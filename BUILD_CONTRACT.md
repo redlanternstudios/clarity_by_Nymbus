@@ -12,6 +12,7 @@ It must cover:
 - notice identity and explanation text
 - case identity, queue, routing, escalation, and timeline
 - leadership summary metrics and launch health
+- source references used by Ask Clarity, Notice Insights, and Copilot
 
 Rules:
 - one source of truth
@@ -59,6 +60,7 @@ Rules:
 - no dead pages
 - no role ambiguity
 - leadership and floor support must be intentionally mapped, not implied
+- the portal shell may include role selector cards, but it must not become a detached role-card landing page that replaces the shell
 
 ### 5) State-by-screen matrix
 Every required screen needs a declared state set.
@@ -73,6 +75,8 @@ Required states include:
 - routed
 - escalated
 - read-only locked
+
+The portal shell, servicing console, and docs pages all need a visible state story.
 
 Each screenshot or mockup must say which state it shows.
 

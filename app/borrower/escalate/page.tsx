@@ -1,11 +1,11 @@
 'use client';
 
+import { mockLoan } from '@/lib/data';
 import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 export default function Escalation() {
-  const router = useRouter();
+  const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     reason: '',
     note: '',
@@ -23,115 +23,128 @@ export default function Escalation() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push('/borrower/escalate/confirmed');
+    setSubmitted(true);
   };
 
-  return (
-    <div className="space-y-6">
-      <Link href="/borrower" className="text-accent text-sm mb-4 inline-block">
-        ← Back to Home
-      </Link>
-
-      <div>
-        <h1 className="text-3xl font-serif font-bold text-text-primary mb-2">
-          Request Help
+  if (submitted) {
+    return (
+      <div className="max-w-2xl mx-auto">
+        <h1 className="text-3xl font-serif font-bold text-text-primary mb-8">
+          Escalation Confirmation
         </h1>
-        <p className="text-text-muted">
-          Tell us what you need help with and add any details. We&apos;ll route your request to the right team.
-        </p>
-      </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Reason Section */}
+        <div className="bg-surface border border-border rounded-lg p-12 text-center">
+          <div className="text-5xl mb-6">✓</div>
+          <h2 className="text-2xl font-semibold text-text-primary mb-4">
+            Request submitted
+          </h2>
+          <p className="text-text-muted mb-8">
+            Your request was sent to customer support.
+          </p>
+
+          <div className="space-y-4 mb-8 text-left">
+            <div className="flex justify-between py-3 border-b border-border">
+              <p className="text-text-muted">Reference</p>
+              <p className="font-semibold text-text-primary">CL-1047</p>
+            </div>
+            <div className="flex justify-between py-3 border-b border-border">
+              <p className="text-text-muted">Loan</p>
+              <p className="font-semibold text-text-primary">{mockLoan.id}</p>
+            </div>
+            <div className="py-3">
+              <p className="text-text-muted mb-2">Next step</p>
+              <p className="text-text-primary">
+                A support specialist will review the request.
+              </p>
+            </div>
+          </div>
+
+          <Link href="/borrower">
+            <button className="bg-accent hover:bg-accent-dark text-background font-semibold py-2 px-6 rounded transition-colors">
+              Back to Home
+            </button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-2xl mx-auto">
+      <h1 className="text-3xl font-serif font-bold text-text-primary mb-8">
+        Request human support
+      </h1>
+
+      <form onSubmit={handleSubmit} className="space-y-8">
+        {/* Reason */}
         <div className="bg-surface border border-border rounded-lg p-6">
-          <h2 className="text-lg font-semibold text-text-primary mb-4">1. What can we help you with?</h2>
+          <label htmlFor="reason" className="block text-sm font-semibold text-text-primary mb-3">
+            Reason
+          </label>
           <select
+            id="reason"
             name="reason"
             value={formData.reason}
             onChange={handleChange}
             required
-            className="w-full bg-elevated border border-border rounded px-4 py-3 text-text-primary focus:outline-none focus:border-accent mb-4"
+            className="w-full bg-elevated border border-border rounded px-4 py-3 text-text-primary focus:outline-none focus:border-accent"
           >
-            <option value="">Select a reason</option>
-            <option value="Payment Change Question">Payment Change Question</option>
-            <option value="Escrow Question">Escrow Question</option>
-            <option value="Notice Issue">Notice Issue</option>
-            <option value="General Assistance">General Assistance</option>
+            <option value="">Select a reason...</option>
+            <option value="I am confused about the payment-change notice">
+              I am confused about the payment-change notice
+            </option>
+            <option value="I need help with payment options">
+              I need help with payment options
+            </option>
+            <option value="I want to discuss the escrow shortage">
+              I want to discuss the escrow shortage
+            </option>
+            <option value="Other">Other</option>
           </select>
-
-          <div className="space-y-2 max-h-48 overflow-y-auto">
-            <div className="bg-elevated rounded p-3 border border-border">
-              <div className="flex items-start gap-2">
-                <span className="text-lg flex-shrink-0">💵</span>
-                <div>
-                  <p className="text-text-primary font-medium">Payment Change Question</p>
-                  <p className="text-text-muted text-xs">Questions about your new payment or payment change details.</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-elevated rounded p-3 border border-border">
-              <div className="flex items-start gap-2">
-                <span className="text-lg flex-shrink-0">💰</span>
-                <div>
-                  <p className="text-text-primary font-medium">Escrow Question</p>
-                  <p className="text-text-muted text-xs">Questions about your escrow analysis, taxes, or insurance.</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-elevated rounded p-3 border border-border">
-              <div className="flex items-start gap-2">
-                <span className="text-lg flex-shrink-0">📄</span>
-                <div>
-                  <p className="text-text-primary font-medium">Notice Issue</p>
-                  <p className="text-text-muted text-xs">Questions about a recent notice or communication you received.</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-elevated rounded p-3 border border-border">
-              <div className="flex items-start gap-2">
-                <span className="text-lg flex-shrink-0">🆘</span>
-                <div>
-                  <p className="text-text-primary font-medium">General Assistance</p>
-                  <p className="text-text-muted text-xs">Something else or general help with your loan.</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* Additional Details Section */}
+        {/* Additional Note */}
         <div className="bg-surface border border-border rounded-lg p-6">
-          <h2 className="text-lg font-semibold text-text-primary mb-4">2. Add any details (optional)</h2>
+          <label htmlFor="note" className="block text-sm font-semibold text-text-primary mb-3">
+            Additional note (optional)
+          </label>
           <textarea
+            id="note"
             name="note"
             value={formData.note}
             onChange={handleChange}
-            placeholder="Share any additional information that can help us assist you."
+            placeholder="Please provide any additional context..."
             rows={5}
             className="w-full bg-elevated border border-border rounded px-4 py-3 text-text-primary placeholder-text-muted focus:outline-none focus:border-accent resize-none"
           />
-          <p className="text-text-muted text-xs mt-2">0/1000</p>
         </div>
 
-        {/* Info Box */}
-        <div className="bg-info/10 border border-info rounded-lg p-6">
-          <div className="flex gap-3">
-            <span className="text-lg flex-shrink-0">ℹ️</span>
-            <div>
-              <p className="text-info font-medium mb-1">Your request will be securely sent to our system of record and routed to the appropriate team.</p>
-              <p className="text-text-muted text-sm">You&apos;ll receive a response as soon as possible.</p>
-            </div>
-          </div>
+        {/* Destination */}
+        <div className="bg-surface border border-border rounded-lg p-6">
+          <label htmlFor="destination" className="block text-sm font-semibold text-text-primary mb-3">
+            Destination
+          </label>
+          <select
+            id="destination"
+            name="destination"
+            value={formData.destination}
+            onChange={handleChange}
+            className="w-full bg-elevated border border-border rounded px-4 py-3 text-text-primary focus:outline-none focus:border-accent"
+          >
+            <option value="Loan customer support">Loan customer support</option>
+            <option value="Escrow specialist">Escrow specialist</option>
+            <option value="General inquiry">General inquiry</option>
+          </select>
+          <p className="text-xs text-text-muted mt-2">Reference: {mockLoan.id}</p>
         </div>
 
-        {/* Submit Buttons */}
+        {/* Submit */}
         <div className="flex gap-4">
           <button
             type="submit"
-            disabled={!formData.reason}
-            className="flex-1 bg-accent hover:bg-accent-dark disabled:opacity-50 disabled:cursor-not-allowed text-background font-semibold py-3 px-6 rounded transition-colors"
+            className="flex-1 bg-accent hover:bg-accent-dark text-background font-semibold py-3 px-6 rounded transition-colors"
           >
-            Submit Request
+            Confirm request
           </button>
           <Link href="/borrower" className="flex-1">
             <button

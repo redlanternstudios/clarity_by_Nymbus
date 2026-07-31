@@ -19,9 +19,7 @@ Use this after the requirements, stories, acceptance criteria, and page tree are
 
 ## Product Goal
 
-Clarity is a read-only guidance layer that sits on top of existing servicing workflows.
-
-The UI must feel like it belongs inside the Nymbus ecosystem, but it should not pretend to replace the servicing system.
+Clarity is a read-only guidance layer that sits on top of existing servicing workflows. The UI must feel like a premium Nymbus portal with role selection inside the shell, not a detached role-card landing page or a generic SaaS dashboard.
 
 ## Exact Design Rules
 
@@ -33,23 +31,26 @@ The UI must feel like it belongs inside the Nymbus ecosystem, but it should not 
 - No dead pages
 - No hidden workflows
 - No invented functionality
+- No portal landing screen built from large role cards
 
 ## Required Page Set
 
-1. Borrower home
-2. Loan detail
-3. Notice detail
-4. Ask Clarity
-5. Escalation flow
-6. Loan history
-7. Servicing home
-8. Case queue
-9. Case detail
-10. Trends
-11. Notice insights
-12. Routing rules
-13. Clarity Copilot
-14. Docs pages
+1. Portal shell / role selector entry
+2. Borrower home
+3. Loan detail
+4. Notice detail
+5. Ask Clarity
+6. Escalation flow
+7. Escalation confirmation
+8. Loan history
+9. Servicing home
+10. Case queue
+11. Case detail
+12. Trends
+13. Notice insights
+14. Routing rules
+15. Clarity Copilot
+16. Docs pages
 
 ## Core UI Intent By Role
 
@@ -76,6 +77,7 @@ The UI must feel like it belongs inside the Nymbus ecosystem, but it should not 
 ## Required Layout Behaviors
 
 - Sidebar or rail navigation should be stable
+- Borrower should be the default active role in the shell
 - Primary content should always show the current role and task
 - Supporting detail should be visually secondary
 - Actions should be limited to the current role
@@ -144,10 +146,10 @@ The UI must feel like it belongs inside the Nymbus ecosystem, but it should not 
 Tell v0 to:
 
 - Build the prototype using the Clarity dark palette from the token file
+- Start from a portal shell, not a detached role-card landing page
 - Match the page tree exactly
 - Use mock data only
 - Keep the design premium and restrained
 - Show the borrower, servicing agent, floor support, and leadership experiences distinctly
 - Include the chatbot routing concept as an assistive layer
 - Do not add extra screens that are not in the page tree
-

@@ -11,6 +11,7 @@ This is a POC.
 It is a mock data frontend prototype.
 It sits on top of servicing workflows as a read only guidance layer.
 It tells the story for borrowers, servicing agents, floor support, and leadership.
+It should feel like a portal shell with role selection inside it, not a detached role-card landing page.
 
 ## What I Am Not Building
 
@@ -27,7 +28,7 @@ The requirements, design, tasks, page tree, and visual tokens all point at the s
 If a route, screen, or action was not in the spec, I left it out.
 
 I kept the build order narrow.
-Shell first.
+Portal shell first.
 Borrower next.
 Servicing next.
 Docs and verification at the end.
@@ -52,6 +53,7 @@ Loan, payment, and notice data stay read only.
 - `10-CHANGE-LOG.md`
 - `11-UI-PROTOTYPE-BRIEF.md`
 - `12-UI-PROTOTYPE-V0-PACK.md`
+- `15-V0-DESIGN-PROMPT.md`
 
 ## Next Steps
 
