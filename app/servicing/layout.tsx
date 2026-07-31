@@ -18,7 +18,7 @@ export default function ServicingLayout({
     { href: '/servicing/cases', label: 'Cases', section: 'Servicing' },
     { href: '/servicing/trends', label: 'Trends', section: 'Servicing' },
     { href: '/servicing/notice-insights', label: 'Notice Insights', section: 'Servicing' },
-    { href: '/servicing/routing-rules', label: 'Routing Rules', section: 'Servicing' },
+    { href: '/servicing/routing', label: 'Routing', section: 'Servicing' },
     { href: '/servicing/copilot', label: 'Copilot', section: 'Servicing' },
   ];
 

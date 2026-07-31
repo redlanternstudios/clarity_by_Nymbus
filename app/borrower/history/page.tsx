@@ -48,7 +48,15 @@ export default function LoanHistory() {
                   <h3 className="text-text-primary font-semibold mb-1">{event.title}</h3>
                   <p className="text-text-muted text-sm mb-3">{event.description}</p>
                   {event.reference && (
-                    <Link href={event.type === 'notice' ? '/borrower/notice/NT-7821' : '#'}>
+                    <Link
+                      href={
+                        event.type === 'notice'
+                          ? '/borrower/notice/NT-7821'
+                          : event.type === 'question'
+                            ? '/borrower/ask'
+                            : '/borrower/escalate'
+                      }
+                    >
                       <p className="text-accent text-sm font-medium hover:underline cursor-pointer">
                         {event.reference} →
                       </p>

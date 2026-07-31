@@ -148,8 +148,8 @@ export default function ServicingHome() {
             </div>
           </div>
         </div>
-        <Link href="/servicing/routing-rules" className="text-accent text-sm mt-4 inline-block">
-          View routing rules →
+        <Link href="/servicing/routing" className="text-accent text-sm mt-4 inline-block">
+          View routing →
         </Link>
       </div>
     </div>

@@ -8,7 +8,7 @@ export default function LeadershipDashboard() {
           Leadership Dashboard
         </h1>
         <p className="text-text-muted">
-          Explore performance insights, trends, and operational intelligence.
+          Explore performance insights, trends, and launch health.
         </p>
       </div>
 
@@ -34,10 +34,42 @@ export default function LeadershipDashboard() {
         </div>
       </div>
 
-      <div className="bg-info/10 border border-info rounded-lg p-6">
-        <p className="text-info font-medium">
-          Leadership role functionality coming soon. This is an MVP placeholder.
-        </p>
+      <div className="grid grid-cols-2 gap-6">
+        <div className="bg-surface border border-border rounded-lg p-6">
+          <h2 className="text-text-primary font-semibold mb-4">Trends</h2>
+          <div className="space-y-4">
+            <div>
+              <p className="text-text-muted text-sm mb-1">Payment change questions</p>
+              <div className="h-2 bg-elevated rounded-full overflow-hidden">
+                <div className="h-full bg-accent" style={{ width: '78%' }} />
+              </div>
+            </div>
+            <div>
+              <p className="text-text-muted text-sm mb-1">Escrow questions</p>
+              <div className="h-2 bg-elevated rounded-full overflow-hidden">
+                <div className="h-full bg-accent-cyan" style={{ width: '62%' }} />
+              </div>
+            </div>
+            <div>
+              <p className="text-text-muted text-sm mb-1">Routing confidence</p>
+              <div className="h-2 bg-elevated rounded-full overflow-hidden">
+                <div className="h-full bg-success" style={{ width: '91%' }} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-info/10 border border-info rounded-lg p-6">
+          <h2 className="text-text-primary font-semibold mb-4">Launch health</h2>
+          <p className="text-text-muted mb-3">
+            Clarity is reducing friction where borrowers need payment and notice guidance.
+          </p>
+          <ul className="space-y-2 text-text-muted text-sm">
+            <li>• Open cases remain within target</li>
+            <li>• Escalation rate stays controlled</li>
+            <li>• No blocked workflows or dead pages</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

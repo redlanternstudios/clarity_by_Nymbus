@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function Escalation() {
-  const [submitted, setSubmitted] = useState(false);
+  const router = useRouter();
   const [formData, setFormData] = useState({
     reason: '',
     note: '',
@@ -22,52 +23,8 @@ export default function Escalation() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    router.push('/borrower/escalate/confirmed');
   };
-
-  if (submitted) {
-    return (
-      <div className="space-y-6">
-        <div className="text-center py-12">
-          <div className="inline-block w-24 h-24 rounded-full bg-success/20 flex items-center justify-center mb-6">
-            <span className="text-5xl text-success">✓</span>
-          </div>
-          <h1 className="text-3xl font-serif font-bold text-text-primary mb-2">
-            Request submitted successfully!
-          </h1>
-          <p className="text-text-muted mb-8">
-            We&apos;ve received your escalation request and our team will review it as soon as possible.
-          </p>
-        </div>
-
-        <div className="bg-surface border border-border rounded-lg p-6">
-          <h2 className="text-lg font-semibold text-text-primary mb-4">Reference Number</h2>
-          <p className="font-mono text-xl text-accent mb-6">RQ-3782-7791</p>
-          <p className="text-text-muted text-sm mb-4">Save this reference number for your records. You&apos;ll receive a response as soon as possible.</p>
-        </div>
-
-        <div className="bg-info/10 border border-info rounded-lg p-6">
-          <h2 className="text-lg font-semibold text-text-primary mb-2">What happens next?</h2>
-          <div className="space-y-3 text-text-muted text-sm">
-            <p>Our team will review your request and may reach out if we need any additional information. We&apos;ll keep you updated.</p>
-          </div>
-        </div>
-
-        <div className="flex gap-4">
-          <Link href="/borrower" className="flex-1">
-            <button className="w-full bg-accent hover:bg-accent-dark text-background font-semibold py-2 px-6 rounded transition-colors">
-              Back to Home
-            </button>
-          </Link>
-          <Link href="/borrower/history" className="flex-1">
-            <button className="w-full bg-elevated hover:bg-surface border border-border text-text-primary font-semibold py-2 px-6 rounded transition-colors">
-              View History
-            </button>
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="space-y-6">
