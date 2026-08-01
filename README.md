@@ -1,4 +1,4 @@
-![Clarity by Nymbus logo](docs/assets/clarity-logo.png)
+![Clarity by Nymbus logo](./04-brand-assets/clarity-logo.png)
 
 # Clarity by Nymbus
 
