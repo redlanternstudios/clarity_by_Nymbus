@@ -6,7 +6,7 @@ Build target: v0 frontend prototype, mock data only. Backend/production integrat
 
 Routing taxonomy note: keep route destinations to the four human-confirmed destinations only (Floor Support, Customer Support, Product Review, Technical Escalation — these are the values actually used in `/servicing/cases` mock data). If additional labels appear elsewhere, treat them as intake categories or tags, not route endpoints.
 
-KNOWN GAP — routing taxonomy mismatch (found 2026-07-31): `/servicing/routing` currently renders an 8-item destination list (Self-service, General servicing, Escrow specialist, Insurance specialist, Tax specialist, Hardship assistance, Compliance review, Dispute review) that does not match the four destinations actually used by `/servicing/cases` (Floor Support, Customer Support, Product Review, Technical Escalation). This is a real cross-page data inconsistency, not stale documentation — the routing reference page and the case queue disagree with each other. Needs a fix: replace the 8-item list with the four canonical destinations.
+RESOLVED 2026-08-01 — routing taxonomy mismatch: `/servicing/routing` previously rendered an 8-item destination list that didn't match the four destinations used by `/servicing/cases`. Fixed in `app/servicing/routing/page.tsx` — the page now lists the four canonical destinations (Floor Support, Customer Support, Product Review, Technical Escalation), matching Req 3.5 and the case-queue mock data. `02-mvp-page-tree/clarity.mvp.page-tree.md` was also corrected (it still had the old 8-item list and the stale `/servicing/routing-rules` path). Verified via `npm run build` — all 20 routes still compile after the change.
 
 - [x] 1. Global shell
   - Build top nav, left rail, role toggle, search, notification bell, user menu
@@ -57,7 +57,7 @@ KNOWN GAP — routing taxonomy mismatch (found 2026-07-31): `/servicing/routing`
   - Actions: open, assign, change status, escalate, close
   - _Requirements: 2.1, 2.5, 6.3_
   - _Verified: built — status/category/priority/owner filters, table with priority/queue/confidence/SLA risk/owner/status columns, pagination — 2026-07-31_
-  - _GAP CONFIRMED 2026-07-31: the "⋯" button in the Actions column has no `onClick`, no dropdown, no menu markup — `app/servicing/cases/page.tsx` line 165 is a decorative button only. Assign/change status/escalate/close are NOT implemented for the row-level action. This is a real, missing piece of Requirement 2.5, not a documentation gap._
+  - _RESOLVED 2026-08-01: the "⋯" Actions button previously had no `onClick`. Wired a real row-action menu — Assign next owner, Change status, Escalate, Close as resolved — each mutating client-side case state (`useState`) and surfacing a dismissible confirmation banner ("CL-1047 reassigned to Sarah Rivera", etc.) per Requirement 2.5's "reflect the resulting state visibly." Case rows now also show a live `Status` column. Data is still mock/local-state only — no persistence across reload, which is correct for this POC's stated constraints. Verified via `npm run build`._
 
 - [~] 9. Case detail (`/servicing/cases/[id]`) — PARTIAL
   - Borrower question, loan context, notice paragraph, explanation, confidence, timeline, recommended action, source records
@@ -83,10 +83,11 @@ KNOWN GAP — routing taxonomy mismatch (found 2026-07-31): `/servicing/routing`
   - _Requirements: 3.1, 3.2, 3.3, 3.4, 5.3_
   - _Verified 2026-07-31: route exists and builds — one hardcoded prompt/answer pair and a "Confirm action" button correctly gating the suggestion (satisfies the confirm-gate requirement conceptually). GAP: prompt is static text, not an actual input; no source records, timestamps, owner, dependencies, risk level, or confidence level shown; Confirm action button has no `onClick` — clicking it does nothing._
 
-- [~] 13. Routing rules reference (`/servicing/routing`) — REAL GAP, not just partial
+- [x] 13. Routing rules reference (`/servicing/routing`)
   - Static reference of the four supported destinations: floor support, customer support, product review, technical escalation
   - _Requirements: 3.5_
-  - _Verified 2026-07-31: route exists and builds, but content is WRONG — it lists 8 destinations (Self-service, General servicing, Escrow specialist, Insurance specialist, Tax specialist, Hardship assistance, Compliance review, Dispute review) that don't match the four canonical destinations used everywhere else in the app (Floor Support, Customer Support, Product Review, Technical Escalation — see `/servicing/cases` mock data). This is a genuine cross-page data inconsistency. Needs a real fix, not a checkbox._
+  - _Verified 2026-07-31: route exists and builds, but content was WRONG — 8 destinations that didn't match the app's canonical four._
+  - _RESOLVED 2026-08-01: replaced the 8-item list with the four canonical destinations (Floor Support, Customer Support, Product Review, Technical Escalation), now consistent with `requirements.md` Req 3.5 and `/servicing/cases`. Verified via `npm run build`._
 
 - [x] 14. Docs pages (`/docs/product-brief`, `/docs/prd`, `/docs/technical-design`, `/docs/release-plan`, `/docs/user-stories`, `/docs/risk-log`, `/docs/ai-usage`)
   - Render existing SDLC package content (01-REQUIREMENTS, 03-ARCHITECTURE, 04-USER-STORIES, 02-RISK-REGISTER, 12-UI-PROTOTYPE-V0-PACK) into readable in-app pages
@@ -94,9 +95,14 @@ KNOWN GAP — routing taxonomy mismatch (found 2026-07-31): `/servicing/routing`
   - _Verified 2026-07-31: all 7 slugs confirmed real in `app/docs/[slug]/page.tsx` — title, image, and summary content mapped for each. This item was undercounted by the review; it is genuinely done._
 
 - [ ] 15. Full no-dead-page pass
-  - Verify every nav item, primary button, and secondary action across all 20 routes resolves per Requirement 6
+  - Verify every nav item, primary button, and secondary action across all 22 routes resolves per Requirement 6
   - Verify all 9 required states (default, loading, empty, no results, partial data, error, routed, escalated, read-only locked) are represented somewhere in the build
   - _Requirements: 6.1, 6.2, 6.3, 6.4_
+  - _Still open. Remaining known decorative elements not addressed in this pass: Case Detail (`/servicing/cases/[id]`) note composer and action buttons (task 9), Clarity Copilot's Confirm action button and static-only prompt (task 12), and Trends/Notice Insights' simpler-than-spec data (tasks 10, 11)._
+
+- [x] 16. Reconcile Floor Support / Leadership routes against the locked page tree
+  - _Requirements: 6.4_
+  - _RESOLVED 2026-08-01: `/floor-support` and `/leadership` were built as real, functioning top-level routes and linked from the role selector on `/`, but the source-of-truth `02-mvp-page-tree/clarity.mvp.page-tree.md` never defined them — it assumed both roles entered through `/servicing`. This was a genuine Req 6.4 violation (a route existed outside the locked page tree), not just a `tasks.md` omission. Rather than delete two working, well-built pages, the page tree and `design.md` were amended to document these as deliberate additions (each role needed a distinct home per the Constraints section), and the route count was corrected from 20 to 22 throughout. See amendment notes dated 2026-08-01 in both `design.md` and the page-tree doc for the full reasoning._
 
 ## Open Questions (must be resolved before or during build — not yet answered in source package)
 
