@@ -1,3 +1,5 @@
+![Clarity by Nymbus logo](./04-brand-assets/clarity-logo.png)
+
 # Clarity by Nymbus
 
 Clarity by Nymbus is a loan servicing intelligence portal.
@@ -116,7 +118,7 @@ Read in this order:
 |---|---|
 | `01-design-system-tokens/` | `clarity.tokens.css` and the captured theme variables |
 | `02-mvp-page-tree/` | Screen map and no-dead-page route plan |
-| `03-sdlc-release-package/` | Full SDLC package: requirements, architecture, user stories, acceptance criteria, DoD, story points, teams impacted, support plan, change log, UI prototype brief, v0 UI pack, locked V0 design prompt, AI usage |
+| `03-sdlc-release-package/` | Full SDLC package: requirements, architecture, user stories, acceptance criteria, DoD, story points, teams impacted, support plan, change log, UI prototype brief, v0 design prompt |
 | `.kiro/specs/clarity-by-nymbus/` | Kiro-ready mirror of the same Clarity spec set |
 | `04-brand-assets/` | Clarity wordmark and the architecture diagram used in the README and docs |
 
