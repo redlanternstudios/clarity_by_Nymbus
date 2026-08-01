@@ -12,6 +12,63 @@ This repo holds the locked planning inputs, visual tokens, page tree, build cont
 | Mock data only | The POC stays deterministic and reviewable |
 | Human-confirmed routing | No autonomous close, route, or resolve behavior |
 
+## Live Demo
+
+**Live URL:** [https://clarity-sage-eight.vercel.app/](https://clarity-sage-eight.vercel.app/)
+**Repo:** [github.com/redlanternstudios/clarity_by_Nymbus](https://github.com/redlanternstudios/clarity_by_Nymbus)
+
+## Local Setup
+
+```bash
+git clone https://github.com/redlanternstudios/clarity_by_Nymbus.git
+cd clarity_by_Nymbus
+npm install
+```
+
+Create `.env.local` in the repo root:
+
+```
+OPENAI_API_KEY=sk-...
+```
+
+Run locally:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+Build check (what CI/Vercel runs):
+
+```bash
+npm run build
+```
+
+## Stack
+
+- Next.js 16 (App Router), React 19, TypeScript
+- Tailwind CSS v4
+- Vercel AI SDK (`ai`, `@ai-sdk/openai`) — real OpenAI `gpt-4o-mini` call powering `/api/ask-clarity`
+- Deployed on Vercel
+
+## AI / Product Decisions
+
+- **Ask Clarity is a real LLM call, not scripted responses.** `app/api/ask-clarity/route.ts` uses `streamText` against `gpt-4o-mini` with a data-minimized context (only the mock loan/notice fields the borrower is allowed to see) and an explicit system prompt.
+- **Prompt-injection resistant by design.** Inbound questions are checked against a hard-block regex list (ignore instructions, reveal system prompt, "act as," jailbreak patterns, etc.) before the model is ever called, and the system prompt itself carries redundant override-proof rules.
+- **Explicit fallback state.** When the model can't ground an answer in the provided loan/notice data, it returns a fixed `FALLBACK_MESSAGE` directing the borrower to Get Help — the app never lets the model guess about a real loan.
+- **No autonomous action.** Every routing, escalation, or resolution suggestion in the servicing views is confirm-gated — nothing closes, routes, or resolves without an explicit human click. (Note: as of 2026-07-31, some of those confirm buttons on newer servicing pages are UI-only and not yet wired to a state change — see `.kiro/specs/clarity-by-nymbus/tasks.md` for the exact list.)
+- **Mock data only.** Nothing in this POC touches a real borrower, real loan, or production system.
+
+## Known Gaps / Future Work
+
+Tracked in detail in `.kiro/specs/clarity-by-nymbus/tasks.md`. Current honest state as of 2026-07-31:
+
+- Case Queue row-level action menu (assign / change status / escalate / close) is not yet wired — button exists, no handler.
+- Routing Rules reference page currently lists a different destination taxonomy than the rest of the app uses; needs to be reconciled to the four canonical destinations.
+- Case Detail, Trends, Notice Insights, and Clarity Copilot pages are built and render real content but are thinner than their full spec (buttons present but not all wired to state changes; some data points from the spec aren't populated).
+- Kiro's automatic session/collaboration-history hook has not been independently verified as active for this repo.
+
 ## Visual Baseline
 
 ![Clarity Architecture at a Glance](./04-brand-assets/clarity-architecture-dark.png)
@@ -44,6 +101,7 @@ Read in this order:
 7. [Design Tokens](./01-design-system-tokens/clarity.tokens.css)
 8. [Loan Servicing Intelligence Overview (PDF)](./Clarity%20by%20Nymbus%20-%20Loan%20Servicing%20Intelligence.pdf)
 9. [Anticipated Team(s) Impact (PDF)](./Clarity%20by%20Nymbus_Mock.MVP.Anticipated-Team%28s%29-Impact.pdf)
+10. [Change Log — including build tooling obstacles and how they were resolved](./03-sdlc-release-package/clarity/10-CHANGE-LOG.md)
 
 ## What This Repo Is For
 

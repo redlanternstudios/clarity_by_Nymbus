@@ -38,8 +38,30 @@
 - Aligned the UI brief and locked prompt with the portal shell + role-selector layout and the remaining servicing screens
 - Tightened the risk log to call out repo/Kiro/Drive drift and dead-end case actions
 
+## v0.7 — Build Process Notes: Tooling Obstacles and How They Were Resolved
+
+This section is an honest record of the real tooling friction hit while building this POC, and the alternative route taken through each one. Verified items are things directly observed and reproduced during the build. Reported items are stated as fact by the builder but not independently re-verified inside this record — labeled as such per this repo's own truth-labeling standard.
+
+**Repo access / credentials**
+- VERIFIED: the AI execution environment used for review and correction passes had no git push credentials at any point (`git push` consistently failed with `could not read Username for 'https://github.com'`). Every commit and push in this repo's history was authored locally and run from the builder's own terminal, one command at a time, with output verified before the next command.
+- REPORTED: cloning the repo Nymbus/Kiro pointed to directly was blocked by credential issues on the builder's side, independent of the above. Alternative route: work continued against the builder's own GitHub remote (`redlanternstudios/clarity_by_Nymbus`) rather than blocking on that access.
+
+**Kiro**
+- REPORTED: Kiro's full spec-driven CLI workflow required a paid account to build past the spec stage. Alternative route: the Kiro spec files (`requirements.md`, `design.md`, `tasks.md`) in `.kiro/specs/clarity-by-nymbus/` were written directly, by hand, in Kiro's expected format, rather than generated through Kiro's own phased CLI flow. This is already noted in v0.3 above and is repeated here for visibility.
+- VERIFIED: a separate Kiro session hit broken local git authentication and could not run local build or lint checks against this repo. Alternative route: that session fell back to the GitHub public API to re-verify repo contents (file listing, file contents) instead of a local clone, and flagged the local-tooling limitation explicitly rather than reporting false results.
+- REPORTED: Kiro's automatic session/collaboration-history capture (the "Kiro hook" referenced in the assessment brief) has not been independently confirmed as active for this repo. This is called out as an open item, not claimed as done.
+
+**Frontend / deployment**
+- VERIFIED: a fully built, correctly styled version of the portal shell existed only inside a v0.app preview sandbox and was never pushed to the real repo or deployed branch — meaning the "live" deployment and the v0 preview drifted apart from each other. Root cause: v0.app's Create PR / merge flow did not reliably land changes on `main`, and GitHub's "automatically delete head branches on merge" setting compounded the confusion by removing the feature branches v0 needed to keep resolving previews against.
+- VERIFIED: the deployed Vercel project also had a platform-level `404 NOT_FOUND` on `clarity-by-nymbus`'s deployments despite clean build logs, plus SSO/Authentication protection blocking public access on one project — both independent of the frontend code itself.
+- Alternative route taken: rather than continuing to fight v0's merge flow, the correct UI was rebuilt directly in the local repo files (`app/page.tsx`, `components/TopBar.tsx`) to match the confirmed design reference, committed and pushed via terminal, and the deployment was pointed at the Vercel project confirmed to serve real `200` responses (`clarity`, live at `https://clarity-sage-eight.vercel.app/`). This produced a working, publicly reachable live URL for MVP review even though the original v0-driven merge path did not resolve cleanly.
+
+**Overall build path (as reported by the builder)**
+Code was written in Kiro (spec-first), cleaned up in Codex and Claude (structural fixes, correction passes, truth audits), and the frontend was refined in v0 (visual polish, component generation) before being reconciled back into the canonical repo. Where AI tools disagreed with each other or with the repo's actual state, the repo's committed code was treated as the source of truth — see `13-AI-USAGE.md` for the fuller AI-usage record.
+
 ## Notes
 
 - Any future changes should preserve the lean package shape
 - Do not add dead pages or unsupported branches
 - Label accuracy check on architecture diagrams: "Data Ingestion," "Intelligence Layer," and "Outcomes & Actions" are synthesized labels, not literal component names from `03-ARCHITECTURE.md` — treat diagrams as conceptual, not a literal build inventory
+- v0.7's "REPORTED" items reflect the builder's own account of tooling limitations (Kiro paywall, repo credential blocks) and are not independently reproducible from inside this repo — they are recorded for transparency, not claimed as verified fact
