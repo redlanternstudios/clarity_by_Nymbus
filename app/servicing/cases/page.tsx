@@ -3,20 +3,56 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-const mockCases = [
-  { id: 'CL-1047', opened: '2h ago', category: 'Payment Change Explanation', priority: 'Medium', currentQueue: 'Customer Support', suggestedQueue: 'Floor Support', owner: 'Jordan Lee', confidence: 91, slaRisk: 'Low', escalated: false },
-  { id: 'CL-1048', opened: '3h ago', category: 'Payment Not Posting', priority: 'High', currentQueue: 'Customer Support', suggestedQueue: 'Floor Support', owner: 'Sarah Rivera', confidence: 86, slaRisk: 'Medium', escalated: false },
-  { id: 'CL-1049', opened: '5h ago', category: 'Account Update Request', priority: 'Low', currentQueue: 'Customer Support', suggestedQueue: 'Customer Support', owner: 'Devon Parker', confidence: 94, slaRisk: 'Low', escalated: false },
-  { id: 'CL-1050', opened: '6h ago', category: 'Dispute Inquiry', priority: 'High', currentQueue: 'Customer Support', suggestedQueue: 'Product Review', owner: 'Alyssa Morgan', confidence: 78, slaRisk: 'Medium', escalated: false },
-  { id: 'CL-1051', opened: '7h ago', category: 'Login Issue', priority: 'Medium', currentQueue: 'Customer Support', suggestedQueue: 'Technical Escalation', owner: 'Justin Wong', confidence: 72, slaRisk: 'Medium', escalated: false },
-  { id: 'CL-1052', opened: '8h ago', category: 'Statement Request', priority: 'Low', currentQueue: 'Customer Support', suggestedQueue: 'Customer Support', owner: 'Kelly Tran', confidence: 95, slaRisk: 'Low', escalated: false },
+const initialCases = [
+  { id: 'CL-1047', opened: '2h ago', category: 'Payment Change Explanation', priority: 'Medium', currentQueue: 'Customer Support', suggestedQueue: 'Floor Support', owner: 'Jordan Lee', confidence: 91, slaRisk: 'Low', escalated: false, status: 'Routing review' },
+  { id: 'CL-1048', opened: '3h ago', category: 'Payment Not Posting', priority: 'High', currentQueue: 'Customer Support', suggestedQueue: 'Floor Support', owner: 'Sarah Rivera', confidence: 86, slaRisk: 'Medium', escalated: false, status: 'Routing review' },
+  { id: 'CL-1049', opened: '5h ago', category: 'Account Update Request', priority: 'Low', currentQueue: 'Customer Support', suggestedQueue: 'Customer Support', owner: 'Devon Parker', confidence: 94, slaRisk: 'Low', escalated: false, status: 'Routing review' },
+  { id: 'CL-1050', opened: '6h ago', category: 'Dispute Inquiry', priority: 'High', currentQueue: 'Customer Support', suggestedQueue: 'Product Review', owner: 'Alyssa Morgan', confidence: 78, slaRisk: 'Medium', escalated: false, status: 'Routing review' },
+  { id: 'CL-1051', opened: '7h ago', category: 'Login Issue', priority: 'Medium', currentQueue: 'Customer Support', suggestedQueue: 'Technical Escalation', owner: 'Justin Wong', confidence: 72, slaRisk: 'Medium', escalated: false, status: 'Routing review' },
+  { id: 'CL-1052', opened: '8h ago', category: 'Statement Request', priority: 'Low', currentQueue: 'Customer Support', suggestedQueue: 'Customer Support', owner: 'Kelly Tran', confidence: 95, slaRisk: 'Low', escalated: false, status: 'Routing review' },
 ];
 
+const AVAILABLE_OWNERS = ['Jordan Lee', 'Sarah Rivera', 'Devon Parker', 'Alyssa Morgan', 'Justin Wong', 'Kelly Tran'];
+const STATUS_CYCLE = ['Routing review', 'In progress', 'Pending confirmation', 'Resolved'];
+
 export default function CaseQueue() {
+  const [cases, setCases] = useState(initialCases);
   const [sortBy, setSortBy] = useState<'id' | 'priority' | 'confidence'>('id');
   const [filterQueue, setFilterQueue] = useState('Customer Support');
+  const [openMenuId, setOpenMenuId] = useState<string | null>(null);
+  const [lastAction, setLastAction] = useState<string | null>(null);
 
-  const filteredCases = mockCases.filter(c => c.currentQueue === filterQueue);
+  const updateCase = (id: string, changes: Partial<typeof initialCases[number]>) => {
+    setCases((prev) => prev.map((c) => (c.id === id ? { ...c, ...changes } : c)));
+  };
+
+  const handleAssign = (id: string, currentOwner: string) => {
+    const nextOwner = AVAILABLE_OWNERS[(AVAILABLE_OWNERS.indexOf(currentOwner) + 1) % AVAILABLE_OWNERS.length];
+    updateCase(id, { owner: nextOwner });
+    setLastAction(`${id} reassigned to ${nextOwner}`);
+    setOpenMenuId(null);
+  };
+
+  const handleChangeStatus = (id: string, currentStatus: string) => {
+    const nextStatus = STATUS_CYCLE[(STATUS_CYCLE.indexOf(currentStatus) + 1) % STATUS_CYCLE.length];
+    updateCase(id, { status: nextStatus });
+    setLastAction(`${id} status changed to "${nextStatus}"`);
+    setOpenMenuId(null);
+  };
+
+  const handleEscalate = (id: string) => {
+    updateCase(id, { escalated: true, status: 'Escalated' });
+    setLastAction(`${id} escalated for review`);
+    setOpenMenuId(null);
+  };
+
+  const handleClose = (id: string) => {
+    updateCase(id, { status: 'Closed' });
+    setLastAction(`${id} closed as resolved`);
+    setOpenMenuId(null);
+  };
+
+  const filteredCases = cases.filter(c => c.currentQueue === filterQueue);
   
   const sortedCases = [...filteredCases].sort((a, b) => {
     if (sortBy === 'confidence') return b.confidence - a.confidence;
@@ -107,6 +143,19 @@ export default function CaseQueue() {
         </div>
       </div>
 
+      {/* Last action confirmation (Requirement 2.5 / 6.3 — visible resulting state) */}
+      {lastAction && (
+        <div className="bg-success/10 border border-success rounded-lg px-4 py-3 flex items-center justify-between">
+          <p className="text-sm text-text-primary">{lastAction}</p>
+          <button
+            onClick={() => setLastAction(null)}
+            className="text-text-muted hover:text-text-primary text-sm"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
+
       {/* Table */}
       <div className="bg-surface border border-border rounded-lg overflow-hidden">
         <div className="overflow-x-auto">
@@ -128,6 +177,7 @@ export default function CaseQueue() {
                   Confidence ↕
                 </th>
                 <th className="px-4 py-3 text-left text-text-muted text-sm font-semibold">SLA Risk</th>
+                <th className="px-4 py-3 text-left text-text-muted text-sm font-semibold">Status</th>
                 <th className="px-4 py-3 text-left text-text-muted text-sm font-semibold">Escalation</th>
                 <th className="px-4 py-3 text-center text-text-muted text-sm font-semibold">Actions</th>
               </tr>
@@ -158,11 +208,46 @@ export default function CaseQueue() {
                       {caseItem.slaRisk}
                     </span>
                   </td>
+                  <td className="px-4 py-3 text-text-primary text-sm">{caseItem.status}</td>
                   <td className="px-4 py-3 text-text-primary text-sm">
                     {caseItem.escalated ? 'Yes' : 'No'}
                   </td>
-                  <td className="px-4 py-3 text-center">
-                    <button className="text-text-muted hover:text-accent text-lg">⋯</button>
+                  <td className="px-4 py-3 text-center relative">
+                    <button
+                      onClick={() => setOpenMenuId(openMenuId === caseItem.id ? null : caseItem.id)}
+                      className="text-text-muted hover:text-accent text-lg px-2"
+                      aria-label={`Actions for ${caseItem.id}`}
+                    >
+                      ⋯
+                    </button>
+                    {openMenuId === caseItem.id && (
+                      <div className="absolute right-2 top-full z-10 mt-1 w-48 rounded-lg border border-border bg-elevated shadow-lg text-left">
+                        <button
+                          onClick={() => handleAssign(caseItem.id, caseItem.owner)}
+                          className="block w-full px-3 py-2 text-sm text-text-primary hover:bg-surface text-left"
+                        >
+                          Assign next owner
+                        </button>
+                        <button
+                          onClick={() => handleChangeStatus(caseItem.id, caseItem.status)}
+                          className="block w-full px-3 py-2 text-sm text-text-primary hover:bg-surface text-left"
+                        >
+                          Change status
+                        </button>
+                        <button
+                          onClick={() => handleEscalate(caseItem.id)}
+                          className="block w-full px-3 py-2 text-sm text-warning hover:bg-surface text-left"
+                        >
+                          Escalate
+                        </button>
+                        <button
+                          onClick={() => handleClose(caseItem.id)}
+                          className="block w-full px-3 py-2 text-sm text-danger hover:bg-surface text-left border-t border-border"
+                        >
+                          Close as resolved
+                        </button>
+                      </div>
+                    )}
                   </td>
                 </tr>
               ))}

@@ -187,17 +187,14 @@
   - estimated operational impact
 
 ### 12. Routing Rules
-- Route: `/servicing/routing-rules`
+- Route: `/servicing/routing`
 - Purpose: define escalation destinations
-- Routes:
-  - self-service
-  - general servicing
-  - escrow specialist
-  - insurance specialist
-  - tax specialist
-  - hardship assistance
-  - compliance review
-  - dispute review
+- Routes (canonical — must match `requirements.md` Req 3.5 and case data in `/servicing/cases`):
+  - floor support
+  - customer support
+  - product review
+  - technical escalation
+- Amendment (2026-08-01): route path corrected from `/servicing/routing-rules` to `/servicing/routing` to match the built app; destination list corrected from an earlier 8-item specialist taxonomy (self-service, general servicing, escrow specialist, insurance specialist, tax specialist, hardship assistance, compliance review, dispute review) to the four canonical destinations actually used elsewhere in the product. The 8-item list was a stale draft that never matched `requirements.md` Req 3.5 or the case-queue mock data, and had leaked into the built page before this correction.
 
 ### 13. Clarity Copilot
 - Route: `/servicing/copilot`
@@ -213,6 +210,18 @@
   - confidence level
   - next step
   - confirm action state
+
+## Role home routes (amendment, 2026-08-01)
+
+The original tree below assumed Floor Support and Leadership both entered through `/servicing`. During build, each was given its own dedicated home route so all four roles have a distinct entry point, per the requirement that "every role must have a distinct, complete path through the product":
+
+### 12a. Floor Support Home
+- Route: `/floor-support`
+- Purpose: Floor Support's own landing view — escalation queue, launch-health metrics, quick actions, quick links into `/servicing/routing`, `/borrower/escalate`, `/borrower/history`
+
+### 12b. Leadership Home
+- Route: `/leadership`
+- Purpose: Leadership's own landing view — KPI cards (borrowers, active cases, system health, resolution time), trend bars, launch-health summary
 
 ## Docs pages
 
@@ -236,6 +245,10 @@
 
 ### 20. AI Usage Notes
 - Route: `/docs/ai-usage`
+
+## Route count
+
+22 routes total (20 original + `/floor-support` + `/leadership`, added 2026-08-01 — see amendment above). No further additions permitted without an equivalent documented amendment.
 
 ## No-dead-page rule
 - Every nav item must resolve to a real page, drawer, or modal.

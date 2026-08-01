@@ -64,8 +64,13 @@ npm run build
 
 ## Known Gaps / Future Work
 
-Tracked in detail in `.kiro/specs/clarity-by-nymbus/tasks.md`. Current honest state as of 2026-07-31:
+Tracked in detail in `.kiro/specs/clarity-by-nymbus/tasks.md`. Current honest state as of 2026-08-01:
 
+- **Fixed 2026-08-01:** Case Queue row-level action menu (assign / change status / escalate / close) is now wired — each action mutates local case state and surfaces a visible confirmation banner (e.g. "CL-1047 reassigned to Sarah Rivera"). Still local-state only, no persistence across reload, which is correct for this POC's mock-data-only constraint.
+- **Fixed 2026-08-01:** Routing Rules reference page previously listed a different 8-item destination taxonomy than the rest of the app. It now lists the same four canonical destinations used everywhere else (Floor Support, Customer Support, Product Review, Technical Escalation).
+- **Fixed 2026-08-01:** `/floor-support` and `/leadership` exist as real, built top-level routes but were missing from the locked page tree (`02-mvp-page-tree/clarity.mvp.page-tree.md`), which only ever routed those roles through `/servicing`. Rather than delete two working pages, the page tree and `design.md` were amended to document them as deliberate additions — each role needed its own distinct entry point per the "distinct, complete path through the product" constraint. Route count corrected from 20 to 22 throughout the spec docs.
+- Case Detail, Trends, Notice Insights, and Clarity Copilot pages are built and render real content but are thinner than their full spec (buttons present but not all wired to state changes; some data points from the spec aren't populated). Not addressed in this pass.
+- Kiro's automatic session/collaboration-history hook is in progress as an unmerged pull request ([PR #8](https://github.com/redlanternstudios/clarity_by_Nymbus/pull/8)) — not yet on `main`, and not yet independently verified as firing in a live Kiro session.
 - Case Queue row-level action menu (assign / change status / escalate / close) is not yet wired — button exists, no handler.
 - Routing Rules reference page currently lists a different destination taxonomy than the rest of the app uses; needs to be reconciled to the four canonical destinations.
 - Case Detail, Trends, Notice Insights, and Clarity Copilot pages are built and render real content but are thinner than their full spec (buttons present but not all wired to state changes; some data points from the spec aren't populated).
