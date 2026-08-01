@@ -1,0 +1,26 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "capture-user-prompts",
+      "description": "Appends every user prompt, with a timestamp, to the collaboration log. This satisfies the take-home requirement to automatically capture AI collaboration context in real time rather than as an after-the-fact summary.",
+      "trigger": "UserPromptSubmit",
+      "action": {
+        "type": "command",
+        "command": "mkdir -p .kiro/session-log && printf '\\n### %s\\n\\n**Prompt:**\\n\\n%s\\n' \"$(date -Iseconds)\" \"$USER_PROMPT\" >> .kiro/session-log/COLLABORATION-LOG.md"
+      },
+      "timeout": 5,
+      "enabled": true
+    },
+    {
+      "name": "capture-turn-summary",
+      "description": "After each agent turn, records a short summary of what was asked, what was decided, and what changed, directly under the matching prompt entry in the same collaboration log -- so the log reads as a real decision trail, not just a prompt dump.",
+      "trigger": "Stop",
+      "action": {
+        "type": "agent",
+        "prompt": "Summarize this turn in 2-5 bullet points: what was asked, what decision or judgment call was made (if any), which files changed, and why. Append the summary under a '**Response summary:**' heading directly beneath the most recent '### <timestamp>' entry in .kiro/session-log/COLLABORATION-LOG.md. Do not rewrite, reorder, or remove any existing log content -- only append."
+      },
+      "enabled": true
+    }
+  ]
+}
