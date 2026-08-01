@@ -38,9 +38,13 @@
 - Aligned the UI brief and locked prompt with the portal shell + role-selector layout and the remaining servicing screens
 - Tightened the risk log to call out repo/Kiro/Drive drift and dead-end case actions
 
-## v0.7 — Build Process Notes: Tooling Obstacles and How They Were Resolved
+## v0.7 — Build Process Notes: Working Through Environment Constraints
 
-This section is an honest record of the real tooling friction hit while building this POC, and the alternative route taken through each one. Verified items are things directly observed and reproduced during the build. Reported items are stated as fact by the builder but not independently re-verified inside this record — labeled as such per this repo's own truth-labeling standard.
+The build environment introduced real ambiguity and tooling constraints along the way: inconsistent repository access, a Kiro workflow that hit a paid-tier ceiling, and a deployment pipeline that didn't behave predictably. Those were treated as delivery risks, not blockers — each one was documented as it came up, a workable alternative was chosen, and the product intent and audit trail were preserved throughout. The goal was never a perfectly clean build path; it was a coherent, reviewable product with nothing hidden.
+
+Concretely: the product direction around loan servicing was clarified and constrained to a reviewable MVP, assumptions were documented as they were made, and work kept moving when repository access, Kiro availability, and deployment workflows were inconsistent. The committed repository was treated as the source of truth throughout, the spec-driven structure was preserved even when Kiro's own tooling couldn't be used end-to-end, and the priority stayed on delivering something coherent and reviewable rather than papering over unresolved gaps.
+
+Below is the specific record — what happened, what's independently verified versus reported by the builder, and the alternative route taken in each case. Verified items are things directly observed and reproduced during the build. Reported items are stated as fact by the builder but not independently re-verified inside this record — labeled as such per this repo's own truth-labeling standard.
 
 **Repo access / credentials**
 - VERIFIED: the AI execution environment used for review and correction passes had no git push credentials at any point (`git push` consistently failed with `could not read Username for 'https://github.com'`). Every commit and push in this repo's history was authored locally and run from the builder's own terminal, one command at a time, with output verified before the next command.
