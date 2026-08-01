@@ -94,3 +94,22 @@ A second, more skeptical pass audited the v0.8 entry above and PR #8's claims di
 - Trends and Notice Insights' simpler-than-spec data (tasks 10, 11).
 - Task 15, the full no-dead-page verification pass across all 22 routes, remains unstarted.
 - The new collaboration-capture hook from v0.8 is still unverified as firing in a live Kiro session — that claim was not re-tested in this pass.
+## v0.8 — Repo Audit + Collaboration Hook Added (2026-08-01)
+
+A Kiro-lensed audit of the full repo was run against the Nymbus take-home brief. Findings, honestly stated:
+
+**Already present and holding up:**
+- `.kiro/specs/clarity-by-nymbus/` contains real `requirements.md` (EARS-style, 6 numbered requirements with acceptance criteria), `design.md` (architecture, data model, route map, guardrails), and `tasks.md` (18 tasks with an honest `[x]` / `[~]` / `[ ]` completion ledger and dated verification notes) — this is genuine spec-driven structure, not a restatement of the brief.
+- `npm install` and `npm run build` both succeed cleanly (Next.js 16, Turbopack) against the committed code — all 20 routes in the page tree resolve and compile.
+- `app/api/ask-clarity/route.ts` is a real `streamText` call against `gpt-4o-mini` with data-minimized context, a hard-block regex layer against prompt injection, and a genuine fallback message path — this matches what `README.md` claims.
+- `tasks.md` already self-reports partial/decorative buttons (Case Detail, Copilot, routing taxonomy mismatch) rather than hiding them — this is the kind of honesty the brief rewards.
+
+**Gap found and fixed this pass:**
+- The brief requires "a Kiro hook to capture session context and collaboration history automatically." No `.kiro/hooks/` directory existed before this pass — `13-AI-USAGE.md` and this change log's own v0.7 entry called this out as an open item rather than claiming it was done.
+- Added `.kiro/hooks/capture-collaboration-context.kiro.hook`: a `UserPromptSubmit` hook that appends every prompt with a timestamp to `.kiro/session-log/COLLABORATION-LOG.md`, plus a `Stop` hook that appends a short agent-authored summary of each turn's decision/change under the matching entry. This is additive only — no existing app code, spec, or doc content was altered to add it.
+- This closes the literal gap but is **not yet independently verified as firing inside a live Kiro IDE session against this repo** — per this repo's own truth-labeling standard, that verification step is reported as done, not confirmed as observed, until someone runs a real Kiro session against `main` and checks that `COLLABORATION-LOG.md` actually grows.
+
+**Not touched, and should not be read as fixed by this pass:**
+- The `/servicing/routing` 8-vs-4 destination mismatch (task 13).
+- Decorative buttons on Case Detail, Case Queue row actions, and Clarity Copilot (tasks 8, 9, 12).
+- Task 15, the full no-dead-page verification pass, remains unstarted.
