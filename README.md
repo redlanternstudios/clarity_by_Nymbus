@@ -69,7 +69,7 @@ Tracked in detail in `.kiro/specs/clarity-by-nymbus/tasks.md`. Current honest st
 - Case Queue row-level action menu (assign / change status / escalate / close) is not yet wired — button exists, no handler.
 - Routing Rules reference page currently lists a different destination taxonomy than the rest of the app uses; needs to be reconciled to the four canonical destinations.
 - Case Detail, Trends, Notice Insights, and Clarity Copilot pages are built and render real content but are thinner than their full spec (buttons present but not all wired to state changes; some data points from the spec aren't populated).
-- Kiro's automatic session/collaboration-history hook has not been independently verified as active for this repo.
+- Kiro session/collaboration-history capture is now wired via `.kiro/hooks/capture-collaboration-context.kiro.hook` (added 2026-08-01, see `10-CHANGE-LOG.md` v0.8). It logs to `.kiro/session-log/COLLABORATION-LOG.md` on every prompt and turn going forward. It has not yet been exercised in a live Kiro IDE session against this repo, so it is unverified in practice, not just in theory — treat entries in that log as the real record from this point forward, and everything before it as the hand-written account in `13-AI-USAGE.md` / `10-CHANGE-LOG.md`.
 
 ## Visual Baseline
 
