@@ -88,7 +88,9 @@ Fonts: display = Iowan Old Style/Baskerville serif (headers only), body = Inter 
 - Support queue indicator — badge/chip showing queue + SLA risk
 - Severity/priority label — color-coded per status tokens
 
-## Screens (page tree — 20 routes, no additions permitted)
+## Screens (page tree — 22 routes)
+
+Note: the original lock specified 20 routes and named `/floor-support` and `/leadership` as views reached only through `/servicing/*`. During build, both were implemented as real standalone top-level routes (`/floor-support`, `/leadership`) instead of nested servicing views. That decision is recorded here rather than reverted, since both routes are functional and add real role-specific value; the page tree below is corrected to match what was actually built. See `10-CHANGE-LOG.md` v0.9.
 
 ### Shell
 - `/` — portal shell: top nav, left rail, role toggle, search, notifications, user menu, role selection entry state
@@ -112,6 +114,12 @@ Fonts: display = Iowan Old Style/Baskerville serif (headers only), body = Inter 
 
 ### Docs (7)
 - `/docs/product-brief`, `/docs/prd`, `/docs/technical-design`, `/docs/release-plan`, `/docs/user-stories`, `/docs/risk-log`, `/docs/ai-usage`
+
+### Floor Support (1)
+- `/floor-support` — real-time guidance, escalations, and routing insights dashboard for floor support role
+
+### Leadership (1)
+- `/leadership` — performance insights, trends, and operational intelligence dashboard for leadership role
 
 ## Required States (every relevant screen)
 

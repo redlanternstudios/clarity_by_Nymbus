@@ -1,14 +1,10 @@
 import Link from 'next/link';
 
 const destinations = [
-  { name: 'Self-service', note: 'Borrower-facing guidance and answers' },
-  { name: 'General servicing', note: 'Standard servicing ownership' },
-  { name: 'Escrow specialist', note: 'Taxes, insurance, and escrow balance' },
-  { name: 'Insurance specialist', note: 'Coverage and premium adjustments' },
-  { name: 'Tax specialist', note: 'Tax changes and related notices' },
-  { name: 'Hardship assistance', note: 'Relief and special handling' },
-  { name: 'Compliance review', note: 'Policy or regulatory review' },
-  { name: 'Dispute review', note: 'Cases that need formal review' },
+  { name: 'Floor Support', note: 'Real-time guidance, escalations, and routing insights for complex or ambiguous cases' },
+  { name: 'Customer Support', note: 'Standard borrower-facing servicing ownership and general inquiries' },
+  { name: 'Product Review', note: 'Cases that need formal dispute or product-level review' },
+  { name: 'Technical Escalation', note: 'Login, account access, or platform-technical issues' },
 ];
 
 export default function RoutingPage() {

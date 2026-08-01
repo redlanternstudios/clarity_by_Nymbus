@@ -59,17 +59,18 @@ npm run build
 - **Ask Clarity is a real LLM call, not scripted responses.** `app/api/ask-clarity/route.ts` uses `streamText` against `gpt-4o-mini` with a data-minimized context (only the mock loan/notice fields the borrower is allowed to see) and an explicit system prompt.
 - **Prompt-injection resistant by design.** Inbound questions are checked against a hard-block regex list (ignore instructions, reveal system prompt, "act as," jailbreak patterns, etc.) before the model is ever called, and the system prompt itself carries redundant override-proof rules.
 - **Explicit fallback state.** When the model can't ground an answer in the provided loan/notice data, it returns a fixed `FALLBACK_MESSAGE` directing the borrower to Get Help — the app never lets the model guess about a real loan.
-- **No autonomous action.** Every routing, escalation, or resolution suggestion in the servicing views is confirm-gated — nothing closes, routes, or resolves without an explicit human click. (Note: as of 2026-07-31, some of those confirm buttons on newer servicing pages are UI-only and not yet wired to a state change — see `.kiro/specs/clarity-by-nymbus/tasks.md` for the exact list.)
+- **No autonomous action.** Every routing, escalation, or resolution suggestion in the servicing views is confirm-gated — nothing closes, routes, or resolves without an explicit human click.
 - **Mock data only.** Nothing in this POC touches a real borrower, real loan, or production system.
 
 ## Known Gaps / Future Work
 
-Tracked in detail in `.kiro/specs/clarity-by-nymbus/tasks.md`. Current honest state as of 2026-07-31:
+Tracked in detail in `.kiro/specs/clarity-by-nymbus/tasks.md`. Current honest state as of 2026-08-01:
 
-- Case Queue row-level action menu (assign / change status / escalate / close) is not yet wired — button exists, no handler.
-- Routing Rules reference page currently lists a different destination taxonomy than the rest of the app uses; needs to be reconciled to the four canonical destinations.
-- Case Detail, Trends, Notice Insights, and Clarity Copilot pages are built and render real content but are thinner than their full spec (buttons present but not all wired to state changes; some data points from the spec aren't populated).
-- Kiro's automatic session/collaboration-history hook has not been independently verified as active for this repo.
+- **Fixed 2026-08-01:** Case Queue row-level action menu (assign / change status / escalate / close) is wired — each action mutates local case state and surfaces a visible confirmation banner (e.g. "CL-1047 reassigned to Sarah Rivera"). Escalate now requires confirming a destination before it commits (Req 2.3), Change Status no longer reopens a case that's Escalated or Closed, and the Status filter dropdown actually filters the table. Still local-state only, no persistence across reload, which is correct for this POC's mock-data-only constraint.
+- **Fixed 2026-08-01:** Routing Rules reference page previously listed a different 8-item destination taxonomy than the rest of the app. It now lists the same four canonical destinations used everywhere else (Floor Support, Customer Support, Product Review, Technical Escalation).
+- **Fixed 2026-08-01:** `/floor-support` and `/leadership` exist as real, built top-level routes but were missing from the locked page tree (`02-mvp-page-tree/clarity.mvp.page-tree.md`), which only ever routed those roles through `/servicing`. Rather than delete two working pages, the page tree and `design.md` were amended to document them as deliberate additions — each role needed its own distinct entry point per the "distinct, complete path through the product" constraint. Route count corrected from 20 to 22 throughout the spec docs.
+- Case Detail, Trends, Notice Insights, and Clarity Copilot pages are built and render real content but are thinner than their full spec (buttons present but not all wired to state changes; some data points from the spec aren't populated). Not addressed yet.
+- Kiro session/collaboration-history capture is wired via `.kiro/hooks/capture-collaboration-context.kiro.hook` (merged 2026-08-01, see `10-CHANGE-LOG.md` v0.8). It logs to `.kiro/session-log/COLLABORATION-LOG.md` on every prompt and turn going forward. It has not yet been exercised in a live Kiro IDE session against this repo, so it is unverified in practice — treat entries in that log as the real record from this point forward, and everything before it as the hand-written account in `13-AI-USAGE.md` / `10-CHANGE-LOG.md`.
 
 ## Visual Baseline
 
@@ -120,7 +121,7 @@ Read in this order:
 | `02-mvp-page-tree/` | Screen map and no-dead-page route plan |
 | `03-sdlc-release-package/` | Full SDLC package: requirements, architecture, user stories, acceptance criteria, DoD, story points, teams impacted, support plan, change log, UI prototype brief, v0 design prompt |
 | `.kiro/specs/clarity-by-nymbus/` | Kiro-ready mirror of the same Clarity spec set |
-| `04-brand-assets/` | Clarity wordmark and the architecture diagram used in the README and docs |
+| `04-brand-assets/` | Clarity wordmark, architecture diagram, and UI Image Pack used in the README and docs |
 
 ## Purpose
 
@@ -138,8 +139,7 @@ These files are labeled so someone outside the build can quickly see:
 - Light architecture variant: `04-brand-assets/clarity-architecture-light.png`
 - Build contract: `BUILD_CONTRACT.md`
 - UI prompt: `03-sdlc-release-package/clarity/15-V0-DESIGN-PROMPT.md`
-- UI image pack source folder: `Clarity by Nymbus - UI Image Pack`
-- Drive UI pack folder: `Clarity by Nymbus - UI Image Pack`
+- UI image pack: `04-brand-assets/UI Image Pack/`
 - Kiro spec pack: `.kiro/specs/clarity-by-nymbus/`
 - Loan Servicing Intelligence overview: [`Clarity by Nymbus - Loan Servicing Intelligence.pdf`](./Clarity%20by%20Nymbus%20-%20Loan%20Servicing%20Intelligence.pdf)
 - Anticipated team(s) impact: [`Clarity by Nymbus_Mock.MVP.Anticipated-Team(s)-Impact.pdf`](./Clarity%20by%20Nymbus_Mock.MVP.Anticipated-Team%28s%29-Impact.pdf)

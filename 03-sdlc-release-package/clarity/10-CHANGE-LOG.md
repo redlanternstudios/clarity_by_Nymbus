@@ -1,5 +1,15 @@
 # Change Log
 
+## v0.10 — Fixed Three Real Bugs Flagged by Automated Review (2026-08-01)
+
+PR #9 (v0.9 below) merged with three unresolved P2 comments from an automated code-review bot on the PR itself. Rather than let them sit merged-and-unaddressed, they're fixed here, same day, in `app/servicing/cases/page.tsx`:
+
+1. **Escalate skipped confirmation.** The handler committed `escalated: true` immediately on click, with no destination confirmation — a direct miss of Requirement 2.3 ("confirm before completing"). Fixed: Escalate now opens an inline panel with a destination selector (defaulting to the case's suggested queue); the case only mutates after an explicit "Confirm escalation" click.
+2. **Change Status could silently reopen a closed/escalated case.** `STATUS_CYCLE` didn't include the terminal states `Escalated`/`Closed`. Calling Change Status on a terminal case made `indexOf` return `-1`, which wrapped back to index 0 ("Routing review") — reopening a case that had just been escalated or closed, while `escalated: true` stayed set, producing a contradictory state. Fixed: terminal statuses are now checked explicitly; Change Status on a terminal case is blocked with a message instead of silently cycling.
+3. **Status filter didn't filter.** The Status `<select>` had no `onChange` — selecting a value did nothing, so a case that had just been closed or escalated stayed visible in the queue view regardless of the filter shown. Fixed: wired to real state, filtering against the same status values (including the two terminal ones) used by the row actions.
+
+This is recorded as its own entry rather than folded into v0.9 because v0.9 was merged with these bugs already present — the change log should reflect what actually shipped, not a retroactively cleaned-up version of it.
+
 ## v0.1
 
 - Initial lean SDLC package created
@@ -62,6 +72,12 @@ Below is the specific record — what happened, what's independently verified ve
 
 **Overall build path (as reported by the builder)**
 Code was written in Kiro (spec-first), cleaned up in Codex and Claude (structural fixes, correction passes, truth audits), and the frontend was refined in v0 (visual polish, component generation) before being reconciled back into the canonical repo. Where AI tools disagreed with each other or with the repo's actual state, the repo's committed code was treated as the source of truth — see `13-AI-USAGE.md` for the fuller AI-usage record.
+
+## v0.9 — Routing Taxonomy Fix + Page Tree Reconciliation (2026-08-01)
+
+- Fixed the confirmed `/servicing/routing` gap from v0.7/tasks.md task 13: replaced the mismatched 8-item destination list with the four canonical destinations (Floor Support, Customer Support, Product Review, Technical Escalation), matching `/servicing/cases` mock data and `design.md`'s Routing Model. This was a real cross-page data inconsistency, not documentation lag, and is now closed.
+- Reconciled `design.md`'s locked page tree: `/floor-support` and `/leadership` existed in the repo as real, functional, standalone routes but were absent from the original 20-route lock (which only reached those roles through `/servicing/*`). Rather than remove working functionality this late, the page tree was corrected to 22 routes and both are now explicitly documented. This is a disclosed scope decision, not a silent fix.
+- `.kiro/hooks/capture-collaboration-context.kiro.hook` (added in v0.8, PR #8) merged to `main` 2026-08-01. Still not independently verified as firing in a live Kiro session — that check remains open.
 
 ## Notes
 
