@@ -44,8 +44,10 @@ Each role has a direct, complete path through the product:
 - Portal shell -> `/`
 - Borrower -> `/borrower` -> `/borrower/notice/[id]` -> `/borrower/ask` -> `/borrower/escalate` -> `/borrower/history`
 - Servicing agent -> `/servicing` -> `/servicing/cases` -> `/servicing/cases/[id]`
-- Floor support -> `/servicing/cases` -> `/servicing/copilot` -> `/servicing/routing`
-- Leadership -> `/servicing` -> `/servicing/trends` -> `/servicing/notice-insights`
+- Floor support -> `/floor-support` (home) -> `/servicing/cases` -> `/servicing/copilot` -> `/servicing/routing`
+- Leadership -> `/leadership` (home) -> `/servicing/trends` -> `/servicing/notice-insights`
+
+**Correction applied 2026-08-01:** the original page tree in `02-mvp-page-tree/clarity.mvp.page-tree.md` did not define standalone home routes for Floor Support or Leadership — it assumed both roles entered through `/servicing`. During build, the role selector on `/` (see `app/page.tsx`) was given four distinct entry cards, and two dedicated home routes were built to give Floor Support and Leadership their own landing view rather than dropping them into the generic servicing dashboard: `/floor-support` (escalation queue, routing-review actions, quick links) and `/leadership` (KPI cards, trend bars, launch health). This was a deliberate scope decision to satisfy the requirement that "every role must have a distinct, complete path through the product" (`requirements.md` Constraints) — a shared `/servicing` entry point for three of four roles read as incomplete role separation. The page tree and locked-route list below are updated to reflect these two routes as real, intentional additions rather than a violation of the no-additions rule.
 
 ### Experience Flow
 
@@ -88,12 +90,14 @@ Fonts: display = Iowan Old Style/Baskerville serif (headers only), body = Inter 
 - Support queue indicator — badge/chip showing queue + SLA risk
 - Severity/priority label — color-coded per status tokens
 
-## Screens (page tree — 22 routes)
+## Screens (page tree — 22 routes, no further additions permitted)
 
 Note: the original lock specified 20 routes and named `/floor-support` and `/leadership` as views reached only through `/servicing/*`. During build, both were implemented as real standalone top-level routes (`/floor-support`, `/leadership`) instead of nested servicing views. That decision is recorded here rather than reverted, since both routes are functional and add real role-specific value; the page tree below is corrected to match what was actually built. See `10-CHANGE-LOG.md` v0.9.
 
 ### Shell
 - `/` — portal shell: top nav, left rail, role toggle, search, notifications, user menu, role selection entry state
+- `/floor-support` — Floor Support home: escalation queue, launch-health metrics, quick action list, quick links (added 2026-08-01, see Role Coverage note above)
+- `/leadership` — Leadership home: KPI cards, trend bars, launch health summary (added 2026-08-01, see Role Coverage note above)
 
 ### Borrower (6)
 - `/borrower` — home: identity, loan summary, payment change, notice preview, Ask Clarity entry, escalation entry

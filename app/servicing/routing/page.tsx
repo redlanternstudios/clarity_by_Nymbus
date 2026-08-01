@@ -1,10 +1,14 @@
 import Link from 'next/link';
 
+// Canonical destinations per requirements.md (Req 3.5) and design.md's
+// "Routing Model" — these are the only four the app ever actually routes to.
+// Any other label seen elsewhere (e.g. case categories/tags) is intake
+// metadata, not a route destination.
 const destinations = [
-  { name: 'Floor Support', note: 'Real-time guidance, escalations, and routing insights for complex or ambiguous cases' },
-  { name: 'Customer Support', note: 'Standard borrower-facing servicing ownership and general inquiries' },
-  { name: 'Product Review', note: 'Cases that need formal dispute or product-level review' },
-  { name: 'Technical Escalation', note: 'Login, account access, or platform-technical issues' },
+  { name: 'Floor Support', note: 'Real-time guidance, escalation review, and routing confirmation' },
+  { name: 'Customer Support', note: 'Standard servicing ownership and borrower-facing follow-up' },
+  { name: 'Product Review', note: 'Disputes and cases that need formal product-level review' },
+  { name: 'Technical Escalation', note: 'Login, access, or platform issues that need technical handling' },
 ];
 
 export default function RoutingPage() {

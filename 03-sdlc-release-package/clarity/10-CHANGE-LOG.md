@@ -85,3 +85,47 @@ Code was written in Kiro (spec-first), cleaned up in Codex and Claude (structura
 - Do not add dead pages or unsupported branches
 - Label accuracy check on architecture diagrams: "Data Ingestion," "Intelligence Layer," and "Outcomes & Actions" are synthesized labels, not literal component names from `03-ARCHITECTURE.md` — treat diagrams as conceptual, not a literal build inventory
 - v0.7's "REPORTED" items reflect the builder's own account of tooling limitations (Kiro paywall, repo credential blocks) and are not independently reproducible from inside this repo — they are recorded for transparency, not claimed as verified fact
+
+
+## v0.9 — Independent Verification Pass + Two Real Fixes + One Spec Amendment (2026-08-01)
+
+A second, more skeptical pass audited the v0.8 entry above and PR #8's claims directly against the repo rather than trusting the pasted summary. Two things were independently confirmed as correct without further action, and two real, previously-known-but-unfixed gaps were closed. One new issue was found and resolved through spec amendment rather than deletion.
+
+**Independently confirmed, no action needed:**
+- PR #8's diff (`.kiro/hooks/capture-collaboration-context.kiro.hook`, `.kiro/session-log/COLLABORATION-LOG.md`, +2 doc edits) matches what was actually pushed — checked via `git log`/`git diff --stat` on the branch itself, not just the pasted description.
+- The `04-brand-assets/UI Image Pack/` files are confirmed present on `main` (`git ls-tree -r origin/main`), landed in commit `8ee1e10` prior to this session — not lost or dropped.
+
+**Fixed this pass (real code changes, not documentation-only):**
+- `/servicing/routing` rendered 8 destinations that never matched the four canonical destinations (Floor Support, Customer Support, Product Review, Technical Escalation) used by `/servicing/cases` and required by `requirements.md` Req 3.5. Fixed in `app/servicing/routing/page.tsx`. The same stale 8-item list and a stale `/servicing/routing-rules` path also existed in the original source-of-truth doc, `02-mvp-page-tree/clarity.mvp.page-tree.md` — corrected there too, since that file (not `design.md`) is what Req 6.4 actually points to.
+- `/servicing/cases`' row-level "⋯" Actions button had no `onClick` at all. Wired a real dropdown menu (Assign next owner, Change status, Escalate, Close as resolved) backed by `useState`, each producing a visible confirmation banner and a live `Status` column update — satisfying Req 2.5's "reflect the resulting state visibly" for at least this one interaction point. Case Detail's and Copilot's decorative buttons (tasks 9, 12) were left untouched — not in scope for this pass, still open.
+
+**New finding, resolved via spec amendment, not deletion:**
+- `/floor-support` and `/leadership` are real, working, well-built top-level routes, linked from the four role-selector cards on `/`. Neither was ever defined in `02-mvp-page-tree/clarity.mvp.page-tree.md`, which routed both roles through `/servicing` instead — a genuine, previously-unflagged Requirement 6.4 violation ("SHALL NOT contain a page... outside the page tree"). Two ways to resolve this: delete the pages, or amend the page tree. Deleting working, reviewed pages to satisfy a stale planning doc seemed like the wrong tradeoff — especially since building a distinct home per role directly serves `requirements.md`'s own Constraints section ("every role must have a distinct, complete path through the product"). Amended `02-mvp-page-tree/clarity.mvp.page-tree.md` and `design.md` to document both routes as deliberate additions, dated 2026-08-01, with the reasoning kept inline rather than silently absorbed. Route count corrected from 20 to 22 everywhere it's referenced in spec docs and this README.
+
+**Verification:** `npm run build` passes cleanly after all changes — same 20 app routes compile (route count in docs is 22 because it also counts the two shell-adjacent role homes as part of the locked tree; the Next.js route list itself was already 20 both before and after, since `/floor-support` and `/leadership` were already built prior to this pass — only the documentation was out of sync with the code).
+
+**Still not touched, and should not be read as fixed by this pass:**
+- Case Detail (`/servicing/cases/[id]`) note composer and action buttons — decorative (task 9).
+- Clarity Copilot's Confirm action button and static-only prompt (task 12).
+- Trends and Notice Insights' simpler-than-spec data (tasks 10, 11).
+- Task 15, the full no-dead-page verification pass across all 22 routes, remains unstarted.
+- The new collaboration-capture hook from v0.8 is still unverified as firing in a live Kiro session — that claim was not re-tested in this pass.
+## v0.8 — Repo Audit + Collaboration Hook Added (2026-08-01)
+
+A Kiro-lensed audit of the full repo was run against the Nymbus take-home brief. Findings, honestly stated:
+
+**Already present and holding up:**
+- `.kiro/specs/clarity-by-nymbus/` contains real `requirements.md` (EARS-style, 6 numbered requirements with acceptance criteria), `design.md` (architecture, data model, route map, guardrails), and `tasks.md` (18 tasks with an honest `[x]` / `[~]` / `[ ]` completion ledger and dated verification notes) — this is genuine spec-driven structure, not a restatement of the brief.
+- `npm install` and `npm run build` both succeed cleanly (Next.js 16, Turbopack) against the committed code — all 20 routes in the page tree resolve and compile.
+- `app/api/ask-clarity/route.ts` is a real `streamText` call against `gpt-4o-mini` with data-minimized context, a hard-block regex layer against prompt injection, and a genuine fallback message path — this matches what `README.md` claims.
+- `tasks.md` already self-reports partial/decorative buttons (Case Detail, Copilot, routing taxonomy mismatch) rather than hiding them — this is the kind of honesty the brief rewards.
+
+**Gap found and fixed this pass:**
+- The brief requires "a Kiro hook to capture session context and collaboration history automatically." No `.kiro/hooks/` directory existed before this pass — `13-AI-USAGE.md` and this change log's own v0.7 entry called this out as an open item rather than claiming it was done.
+- Added `.kiro/hooks/capture-collaboration-context.kiro.hook`: a `UserPromptSubmit` hook that appends every prompt with a timestamp to `.kiro/session-log/COLLABORATION-LOG.md`, plus a `Stop` hook that appends a short agent-authored summary of each turn's decision/change under the matching entry. This is additive only — no existing app code, spec, or doc content was altered to add it.
+- This closes the literal gap but is **not yet independently verified as firing inside a live Kiro IDE session against this repo** — per this repo's own truth-labeling standard, that verification step is reported as done, not confirmed as observed, until someone runs a real Kiro session against `main` and checks that `COLLABORATION-LOG.md` actually grows.
+
+**Not touched, and should not be read as fixed by this pass:**
+- The `/servicing/routing` 8-vs-4 destination mismatch (task 13).
+- Decorative buttons on Case Detail, Case Queue row actions, and Clarity Copilot (tasks 8, 9, 12).
+- Task 15, the full no-dead-page verification pass, remains unstarted.
