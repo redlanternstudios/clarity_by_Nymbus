@@ -1,5 +1,15 @@
 # Change Log
 
+## v0.11 — Third Taxonomy Fix + Copilot Gap Disclosed Against Source Deck (2026-08-01)
+
+A pass against the original Nymbus source documents (`Loan Servicing Intelligence.pdf`, `Anticipated Team Impact.pdf` — the two priority-read PDFs named in the submission email, not just the Kiro-derived specs) surfaced two issues the earlier `tasks.md`/`design.md`-based audits had missed, because those specs had already drifted from the source decks before this repo's correction passes began.
+
+**Fixed this pass:**
+- `/borrower/escalate` used a third, invented destination taxonomy ("Loan customer support," "Escrow specialist," "General inquiry") that matched neither the four canonical destinations used everywhere else in the app (Floor Support, Customer Support, Product Review, Technical Escalation — per `requirements.md` Req 3.5, `design.md`'s Routing Model, and the source deck's own Routing Model slide) nor anything previously flagged in `tasks.md`. This was a genuine, previously undetected inconsistency between two of the app's own screens. Fixed in `app/borrower/escalate/page.tsx`: the destination `<select>` now uses the same four canonical values, defaulting to Customer Support.
+
+**Disclosed, not fixed this pass:**
+- Clarity Copilot (`/servicing/copilot`, task 12) does not implement the interaction contract shown in `Anticipated-Team-Impact.pdf`'s own worked example: a query should return status, current queue, suggested queue, owner, routing confidence, SLA risk, and a recommended next step, sourced and human-confirmed. The live page is a static hardcoded prompt/answer pair with a non-functional "Confirm action" button — it does not query case data, does not return structured fields, and does not gate a real action. This is a bigger gap than "decorative button," and is called out explicitly here rather than left implied by task 12's existing PARTIAL note, since the source deck makes a specific, checkable promise the build doesn't keep. Not attempted this pass given no remaining review window to catch regressions from a rushed rebuild; the honest disclosure is the correct action at this point rather than a rushed fix.
+
 ## v0.10 — Fixed Three Real Bugs Flagged by Automated Review (2026-08-01)
 
 PR #9 (v0.9 below) merged with three unresolved P2 comments from an automated code-review bot on the PR itself. Rather than let them sit merged-and-unaddressed, they're fixed here, same day, in `app/servicing/cases/page.tsx`:

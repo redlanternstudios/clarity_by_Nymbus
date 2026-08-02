@@ -9,7 +9,7 @@ export default function Escalation() {
   const [formData, setFormData] = useState({
     reason: '',
     note: '',
-    destination: 'Loan customer support',
+    destination: 'Customer Support',
   });
 
   const handleChange = (
@@ -131,9 +131,10 @@ export default function Escalation() {
             onChange={handleChange}
             className="w-full bg-elevated border border-border rounded px-4 py-3 text-text-primary focus:outline-none focus:border-accent"
           >
-            <option value="Loan customer support">Loan customer support</option>
-            <option value="Escrow specialist">Escrow specialist</option>
-            <option value="General inquiry">General inquiry</option>
+            <option value="Customer Support">Customer Support</option>
+            <option value="Floor Support">Floor Support</option>
+            <option value="Product Review">Product Review</option>
+            <option value="Technical Escalation">Technical Escalation</option>
           </select>
           <p className="text-xs text-text-muted mt-2">Reference: {mockLoan.id}</p>
         </div>
